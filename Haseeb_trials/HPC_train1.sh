@@ -19,7 +19,8 @@ module load numpy/1.26.4-python-3.11.9-openblas-0.3.27
 cd ~/Desktop/Fagprojekt/1_test/1_test || exit 1
 
 export TORCH_HOME=./torch_cache
-source .venv/bin/activate
+#####source .venv/bin/activate
+source /tmp/$USER/fagprojekt_env/.venv/bin/activate
 
 echo "Running on host:"
 hostname
