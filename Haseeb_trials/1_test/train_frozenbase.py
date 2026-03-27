@@ -41,21 +41,72 @@ def set_seed(seed: int = 42) -> None:
 def get_device() -> torch.device:
     return torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
-class QuadraticHead(nn.Module):
-    def __init__(self, in_features: int, num_classes: int):
+# class QuadraticHead(nn.Module):
+#     def __init__(self, in_features: int, num_classes: int):
+#         super().__init__()
+#         self.linear = nn.Linear(in_features, num_classes)
+#         self.quad = nn.Parameter(torch.zeros(num_classes, in_features, in_features))
+
+#     def forward(self, x):
+#         # x: [batch, d]
+#         linear_out = self.linear(x)  # [batch, C]
+
+#         # quadratic_out[c] = x^T Q_c x
+#         quadratic_out = torch.einsum('bi,cij,bj->bc', x, self.quad, x)
+
+#         return linear_out + quadratic_out
+
+
+class QuadraticAdapterHead(nn.Module):
+    """
+    QuadraNet V2-style classifier head:
+        y = base_linear(x) + quad_adapter(x)
+
+    quad_adapter_c(x) = sum_r (a[c,r]·x) * (b[c,r]·x)
+
+    This is a low-rank quadratic form per class.
+    """
+    def __init__(self, base_linear: nn.Linear, rank: int = 4, freeze_base: bool = True):
         super().__init__()
-        self.linear = nn.Linear(in_features, num_classes)
-        self.quad = nn.Parameter(torch.zeros(num_classes, in_features, in_features))
+        self.in_features = base_linear.in_features
+        self.out_features = base_linear.out_features
+        self.rank = rank
+
+        # Reuse pretrained / existing linear classifier term
+        self.base = nn.Linear(
+            self.in_features,
+            self.out_features,
+            bias=base_linear.bias is not None
+        )
+        self.base.load_state_dict(base_linear.state_dict())
+
+        if freeze_base:
+            for p in self.base.parameters():
+                p.requires_grad = False
+
+        # Low-rank quadratic adapter:
+        # Wa, Wb: [C, r, d]
+        self.wa = nn.Parameter(torch.zeros(self.out_features, rank, self.in_features))
+        self.wb = nn.Parameter(torch.empty(self.out_features, rank, self.in_features))
+
+        # Zero-output init:
+        # quad(x) = 0 at start because wa = 0
+        nn.init.normal_(self.wb, mean=0.0, std=0.02)
 
     def forward(self, x):
-        # x: [batch, d]
-        linear_out = self.linear(x)  # [batch, C]
+        # base linear term
+        linear_out = self.base(x)  # [B, C]
 
-        # quadratic_out[c] = x^T Q_c x
-        quadratic_out = torch.einsum('bi,cij,bj->bc', x, self.quad, x)
+        # ax, bx: [B, C, r]
+        ax = torch.einsum("bd,crd->bcr", x, self.wa)
+        bx = torch.einsum("bd,crd->bcr", x, self.wb)
 
-        return linear_out + quadratic_out
+        # sum over rank dimension -> [B, C]
+        quad_out = (ax * bx).sum(dim=-1)
 
+        return linear_out + quad_out
+    
+    
 # def create_dataloadersold(data_dir: Path, batch_size: int, num_workers: int):
 #     train_dir = data_dir / "train"
 #     test_dir = data_dir / "test"
@@ -88,14 +139,15 @@ class QuadraticHead(nn.Module):
 def create_model(num_classes: int, device: torch.device, head_type: str) -> nn.Module:
     weights = ResNet18_Weights.DEFAULT
     model = resnet18(weights=weights)
-    
+
     for param in model.parameters():
         param.requires_grad = False
-    
+
     in_features = model.fc.in_features
-    
+
     if head_type == "linear":
         model.fc = nn.Linear(in_features, num_classes)
+
     elif head_type == "mlp":
         model.fc = nn.Sequential(
             nn.Linear(in_features, 256),
@@ -103,12 +155,16 @@ def create_model(num_classes: int, device: torch.device, head_type: str) -> nn.M
             nn.Dropout(0.3),
             nn.Linear(256, num_classes),
         )
+
     elif head_type == "quadratic":
-        model.fc = QuadraticHead(in_features, num_classes)
+        base_linear = nn.Linear(in_features, num_classes)
+        model.fc = QuadraticAdapterHead(base_linear, rank=4, freeze_base=True)
+
     else:
         raise ValueError(f"Unknown head_type: {head_type}")
 
     return model.to(device)
+
 
 def get_dataset_pair(dataset_name: str, root: Path, transform):
     dataset_name = dataset_name.lower()
@@ -240,7 +296,7 @@ def main():
     parser.add_argument("--output-dir", type=str, default="outputs")
     parser.add_argument("--head", type=str, default="linear",
                         choices=["linear", "mlp", "quadratic"])
-    parser.add_argument("--epochs", type=int, default=10)
+    parser.add_argument("--epochs", type=int, default=2)
     parser.add_argument("--batch-size", type=int, default=32)
     parser.add_argument("--lr", type=float, default=1e-3)
     parser.add_argument("--num-workers", type=int, default=4)
