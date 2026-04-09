@@ -1,3 +1,4 @@
+# Source: Boilerplate helper functions adapted from Daniel Bourke's "Learn PyTorch for Deep Learning" repository.
 """
 A series of helper functions used throughout the course.
 
@@ -15,9 +16,25 @@ import zipfile
 from pathlib import Path
 
 import requests
-
+from typing import List
+import torchvision
+from tqdm.auto import tqdm  # Provides a nice progress bar during training
+from torch.utils.data import DataLoader
 # Walk through an image classification directory and find out how many files (images)
 # are in each subdirectory.
+
+
+# --- NEW: Hardware Detection ---
+def get_device():
+    if torch.cuda.is_available():
+        return torch.device("cuda")  # Your NVIDIA
+    elif torch.backends.mps.is_available():
+        return torch.device("mps")  # Daniel's Mac
+    else:
+        return torch.device("cpu")  # Fallback
+
+
+# -------------------------------
 
 
 def walk_through_dir(dir_path):
@@ -169,8 +186,6 @@ def plot_loss_curves(results):
 
 # Pred and plot image function from notebook 04
 # See creation: https://www.learnpytorch.io/04_pytorch_custom_datasets/#113-putting-custom-image-prediction-together-building-a-function
-from typing import List
-import torchvision
 
 
 def pred_and_plot_image(
@@ -295,3 +310,136 @@ def download_data(source: str, destination: str, remove_source: bool = True) -> 
             os.remove(data_path / target_file)
 
     return image_path
+
+
+# ==========================================
+# VORES EGNE FUNKTIONER TIL QUADRANET PROJEKTET
+# ==========================================
+
+
+def get_cifar10_dataloaders(batch_size=128, data_dir="./data"):
+    """
+    Downloads the CIFAR-10 dataset, applies necessary image transformations,
+    and returns PyTorch DataLoaders for both training and testing.
+    """
+
+    # 1. Training transforms (Includes Data Augmentation to prevent overfitting)
+    transform_train = torchvision.transforms.Compose(
+        [
+            torchvision.transforms.RandomCrop(32, padding=4),
+            torchvision.transforms.RandomHorizontalFlip(),
+            torchvision.transforms.ToTensor(),
+            torchvision.transforms.Normalize(
+                (0.4914, 0.4822, 0.4465), (0.2023, 0.1994, 0.2010)
+            ),
+        ]
+    )
+
+    # 2. Testing transforms (No augmentation, only tensor conversion and normalization)
+    transform_test = torchvision.transforms.Compose(
+        [
+            torchvision.transforms.ToTensor(),
+            torchvision.transforms.Normalize(
+                (0.4914, 0.4822, 0.4465), (0.2023, 0.1994, 0.2010)
+            ),
+        ]
+    )
+
+    # 3. Download and load the datasets
+    train_dataset = torchvision.datasets.CIFAR10(
+        root=data_dir, train=True, download=True, transform=transform_train
+    )
+
+    test_dataset = torchvision.datasets.CIFAR10(
+        root=data_dir, train=False, download=True, transform=transform_test
+    )
+
+    # 4. Wrap datasets in DataLoaders
+    train_loader = DataLoader(
+        train_dataset, batch_size=batch_size, shuffle=True, num_workers=0
+    )
+    test_loader = DataLoader(
+        test_dataset, batch_size=batch_size, shuffle=False, num_workers=0
+    )
+
+    return train_loader, test_loader
+
+
+# ==========================================
+# TRAINING ENGINE (TRAINING LOOP)
+# ==========================================
+
+
+def train_model(model, train_loader, test_loader, optimizer, loss_fn, epochs, device):
+    """
+    Trains a PyTorch model for a specified number of epochs and returns
+    a dictionary containing the results (loss and accuracy) for plotting.
+    """
+    # 1. Create an empty dictionary to store our results
+    results = {"train_loss": [], "train_acc": [], "test_loss": [], "test_acc": []}
+
+    # Move the model to the target device (GPU or CPU)
+    model.to(device)
+
+    # 2. Loop through the specified number of epochs
+    for epoch in tqdm(range(epochs), desc="Training Epochs"):
+        # --- TRAINING ---
+        model.train()  # Set the model to training mode
+        train_loss, train_acc = 0, 0
+
+        # Iterate through all batches in the training set
+        for batch, (X, y) in enumerate(train_loader):
+            X, y = X.to(device), y.to(device)  # Move data to target device
+
+            # Forward pass (Predict the image class)
+            y_pred_logits = model(X)
+
+            # Calculate Loss (How wrong was the model?)
+            loss = loss_fn(y_pred_logits, y)
+            train_loss += loss.item()
+
+            # Calculate Accuracy
+            y_pred_labels = torch.argmax(torch.softmax(y_pred_logits, dim=1), dim=1)
+            train_acc += accuracy_fn(y_true=y, y_pred=y_pred_labels)
+
+            # Backpropagation (Update the weights)
+            optimizer.zero_grad()
+            loss.backward()
+            optimizer.step()
+
+        # Calculate the average loss and accuracy for the current epoch
+        train_loss /= len(train_loader)
+        train_acc /= len(train_loader)
+
+        # --- TESTING / EVALUATION ---
+        model.eval()  # Set the model to evaluation mode (freezes dropout layers, etc.)
+        test_loss, test_acc = 0, 0
+
+        # Turn off gradient computation to save memory and time
+        with torch.inference_mode():
+            for X, y in test_loader:
+                X, y = X.to(device), y.to(device)
+
+                # Forward pass and calculate test loss/accuracy
+                test_pred_logits = model(X)
+                test_loss += loss_fn(test_pred_logits, y).item()
+
+                test_pred_labels = test_pred_logits.argmax(dim=1)
+                test_acc += accuracy_fn(y_true=y, y_pred=test_pred_labels)
+
+        # Calculate the average loss and accuracy for the test set
+        test_loss /= len(test_loader)
+        test_acc /= len(test_loader)
+
+        # Print the results for this epoch
+        print(
+            f"Epoch: {epoch + 1} | Train loss: {train_loss:.4f} | Train acc: {train_acc:.2f}% | Test loss: {test_loss:.4f} | Test acc: {test_acc:.2f}%"
+        )
+
+        # 3. Save the results so they can be plotted later
+        results["train_loss"].append(train_loss)
+        results["train_acc"].append(train_acc)
+        results["test_loss"].append(test_loss)
+        results["test_acc"].append(test_acc)
+
+    return results
