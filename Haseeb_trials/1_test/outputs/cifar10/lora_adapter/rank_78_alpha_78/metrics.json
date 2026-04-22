@@ -1,0 +1,23 @@
+{
+  "dataset": "cifar10",
+  "stage": "lora_adapter",
+  "base_checkpoint": "outputs/cifar10/linear_base/model.pt",
+  "quad_rank": 4,
+  "resolved_lora_rank": 78,
+  "resolved_lora_alpha": 78.0,
+  "trainable_params": 40716,
+  "total_params": 11222358,
+  "train_loss": [
+    0.6694418937301636
+  ],
+  "train_acc": [
+    0.77014
+  ],
+  "test_loss": [
+    0.6454049988269805
+  ],
+  "test_acc": [
+    0.7843
+  ],
+  "training_time_sec": 864.2956838607788
+}
