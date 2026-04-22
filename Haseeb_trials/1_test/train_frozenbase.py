@@ -29,6 +29,10 @@ from torchvision.models import resnet18, ResNet18_Weights
 # python train_frozenbase.py --dataset food101 --head linear
 # python train_frozenbase.py --dataset food101 --head quadratic
 
+# python train_frozenbase.py --dataset cifar10 --head linear
+# python train_frozenbase.py --dataset cifar10 --head lora
+# python train_frozenbase.py --dataset cifar10 --head quadratic
+
 def set_seed(seed: int = 42) -> None:
     random.seed(seed)
     np.random.seed(seed)
@@ -106,6 +110,49 @@ class QuadraticAdapterHead(nn.Module):
 
         return linear_out + quad_out
     
+class LoRAAdapterHead(nn.Module):
+    """
+    LoRA-style classifier head:
+        y = base_linear(x) + scale * B(Ax)
+
+    Equivalent to:
+        y = (W0 + ΔW) x + b
+        ΔW = B @ A
+
+    Added trainable params:
+        A: [r, d]
+        B: [C, r]
+    """
+    def __init__(self, base_linear: nn.Linear, rank: int = 4, alpha: float = 4.0, freeze_base: bool = False):
+        super().__init__()
+        self.in_features = base_linear.in_features
+        self.out_features = base_linear.out_features
+        self.rank = rank
+        self.scaling = alpha / rank
+
+        self.base = nn.Linear(
+            self.in_features,
+            self.out_features,
+            bias=base_linear.bias is not None
+        )
+        self.base.load_state_dict(base_linear.state_dict())
+
+        if freeze_base:
+            for p in self.base.parameters():
+                p.requires_grad = False
+
+        # LoRA factors: ΔW = B @ A
+        self.A = nn.Parameter(torch.empty(rank, self.in_features))
+        self.B = nn.Parameter(torch.zeros(self.out_features, rank))
+
+        # Standard LoRA init: A random, B zero -> zero initial update
+        nn.init.kaiming_uniform_(self.A, a=math.sqrt(5))
+        nn.init.zeros_(self.B)
+
+    def forward(self, x):
+        base_out = self.base(x)                         # [B, C]
+        lora_out = (x @ self.A.t()) @ self.B.t()       # [B, C]
+        return base_out + self.scaling * lora_out
     
 # def create_dataloadersold(data_dir: Path, batch_size: int, num_workers: int):
 #     train_dir = data_dir / "train"
@@ -159,6 +206,10 @@ def create_model(num_classes: int, device: torch.device, head_type: str) -> nn.M
     elif head_type == "quadratic":
         base_linear = nn.Linear(in_features, num_classes)
         model.fc = QuadraticAdapterHead(base_linear, rank=4, freeze_base=True)
+
+    elif head_type == "lora":
+        base_linear = nn.Linear(in_features, num_classes)
+        model.fc = LoRAAdapterHead(base_linear, rank=4, alpha=4.0, freeze_base=False)
 
     else:
         raise ValueError(f"Unknown head_type: {head_type}")
@@ -288,6 +339,11 @@ def save_checkpoint(model, classes, output_dir: Path, filename: str):
     torch.save(checkpoint, output_dir / filename)
 
 
+def report_params(model):
+    total = sum(p.numel() for p in model.parameters())
+    trainable = sum(p.numel() for p in model.parameters() if p.requires_grad)
+    print(f"Trainable params: {trainable:,} / {total:,} ({100*trainable/total:.2f}%)")
+
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--dataset", type=str, required=True,
@@ -295,7 +351,7 @@ def main():
     parser.add_argument("--data-root", type=str, default="data")
     parser.add_argument("--output-dir", type=str, default="outputs")
     parser.add_argument("--head", type=str, default="linear",
-                        choices=["linear", "mlp", "quadratic"])
+                    choices=["linear", "mlp", "quadratic", "lora"])
     parser.add_argument("--epochs", type=int, default=2)
     parser.add_argument("--batch-size", type=int, default=32)
     parser.add_argument("--lr", type=float, default=1e-3)
@@ -321,6 +377,8 @@ def main():
         device=device,
         head_type=args.head,
     )
+    
+    print(f"Trainable params: {report_params(model):,}")
 
     loss_fn = nn.CrossEntropyLoss()
     optimizer = torch.optim.Adam(
