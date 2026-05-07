@@ -598,7 +598,7 @@ if __name__ == "__main__":
     main()
     
     
-# # 1) Train the frozen-backbone linear base
+# 1) Train the frozen-backbone linear base
 # python train_LoRA_Qudratic.py \
 #   --dataset cifar10 \
 #   --stage linear_base \
@@ -614,9 +614,9 @@ if __name__ == "__main__":
 #   --epochs 10 \
 #   --lr 1e-3
 
-# # 3) Train only the LoRA adapter on top of that same frozen linear base
-# # If you omit --lora-rank, the script auto-picks one that roughly matches
-# # the quadratic head's trainable-parameter budget.
+# 3) Train only the LoRA adapter on top of that same frozen linear base
+# If you omit --lora-rank, the script auto-picks one that roughly matches
+# the quadratic head's trainable-parameter budget.
 # python train_LoRA_Qudratic.py \
 #   --dataset cifar10 \
 #   --stage lora_adapter \
