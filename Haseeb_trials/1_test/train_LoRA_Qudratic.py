@@ -242,7 +242,7 @@ def matched_lora_rank(in_features: int, num_classes: int, quad_rank: int) -> int
 
 
 def extract_linear_head_state_dict(model: nn.Module, stage: str):
-    if stage == "linear_base":
+    if stage in ("linear_base", "scratch"):
         return model.fc.state_dict()
     elif stage in ("quadratic_adapter", "lora_adapter"):
         return model.fc.base.state_dict()
@@ -251,7 +251,7 @@ def extract_linear_head_state_dict(model: nn.Module, stage: str):
 
 
 def extract_in_features(model: nn.Module, stage: str) -> int:
-    if stage == "linear_base":
+    if stage in ("linear_base", "scratch"):
         return model.fc.in_features
     elif stage in ("quadratic_adapter", "lora_adapter"):
         return model.fc.base.in_features
@@ -334,10 +334,13 @@ def create_model(
     lora_rank: int = None,
     lora_alpha: float = None,
 ):
-    weights = ResNet18_Weights.DEFAULT
+    # scratch = random ResNet18 initialization
+    # all other stages use ImageNet-pretrained ResNet18
+    weights = None if stage == "scratch" else ResNet18_Weights.DEFAULT
     model = resnet18(weights=weights)
 
-    # Freeze the ImageNet-pretrained backbone
+    # Default for transfer/adaptation stages: freeze the backbone.
+    # The scratch stage below will unfreeze the full network.
     for param in model.parameters():
         param.requires_grad = False
 
@@ -346,7 +349,14 @@ def create_model(
     resolved_lora_alpha = lora_alpha
 
     if stage == "linear_base":
+        # Transfer-learning baseline: pretrained frozen ResNet18 + trainable linear head.
         model.fc = nn.Linear(in_features, num_classes)
+
+    elif stage == "scratch":
+        # Training-from-scratch baseline: random ResNet18 + trainable full network.
+        model.fc = nn.Linear(in_features, num_classes)
+        for param in model.parameters():
+            param.requires_grad = True
 
     elif stage == "quadratic_adapter":
         if base_checkpoint is None:
@@ -471,7 +481,7 @@ def main():
         "--stage",
         type=str,
         required=True,
-        choices=["linear_base", "quadratic_adapter", "lora_adapter"],
+        choices=["linear_base", "scratch", "quadratic_adapter", "lora_adapter"],
     )
 
     parser.add_argument("--data-root", type=str, default="data")
@@ -598,15 +608,24 @@ if __name__ == "__main__":
     main()
     
     
+
+# 0) Train ResNet18 from scratch
+# This starts from random weights and trains the full network.
+# python train_LoRA_Qudratic_with_scratch_only.py \
+#   --dataset cifar10 \
+#   --stage scratch \
+#   --epochs 50 \
+#   --lr 1e-3
+
 # 1) Train the frozen-backbone linear base
-# python train_LoRA_Qudratic.py \
+# python train_LoRA_Qudratic_with_scratch_only.py \
 #   --dataset cifar10 \
 #   --stage linear_base \
 #   --epochs 10 \
 #   --lr 1e-3
 
 # # 2) Train only the quadratic adapter on top of that same frozen linear base
-# python train_LoRA_Qudratic.py \
+# python train_LoRA_Qudratic_with_scratch_only.py \
 #   --dataset cifar10 \
 #   --stage quadratic_adapter \
 #   --base-checkpoint outputs/cifar10/linear_base/model.pt \
@@ -617,7 +636,7 @@ if __name__ == "__main__":
 # 3) Train only the LoRA adapter on top of that same frozen linear base
 # If you omit --lora-rank, the script auto-picks one that roughly matches
 # the quadratic head's trainable-parameter budget.
-# python train_LoRA_Qudratic.py \
+# python train_LoRA_Qudratic_with_scratch_only.py \
 #   --dataset cifar10 \
 #   --stage lora_adapter \
 #   --base-checkpoint outputs/cifar10/linear_base/model.pt \
