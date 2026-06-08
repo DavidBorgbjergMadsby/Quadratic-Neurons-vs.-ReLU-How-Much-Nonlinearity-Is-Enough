@@ -195,13 +195,13 @@ def create_model(num_classes: int, device: torch.device, head_type: str) -> nn.M
     if head_type == "linear":
         model.fc = nn.Linear(in_features, num_classes)
 
-    elif head_type == "mlp":
-        model.fc = nn.Sequential(
-            nn.Linear(in_features, 256),
-            nn.ReLU(),
-            nn.Dropout(0.3),
-            nn.Linear(256, num_classes),
-        )
+    # elif head_type == "mlp":
+    #     model.fc = nn.Sequential(
+    #         nn.Linear(in_features, 256),
+    #         nn.ReLU(),
+    #         nn.Dropout(0.3),
+    #         nn.Linear(256, num_classes),
+    #     )
 
     elif head_type == "quadratic":
         base_linear = nn.Linear(in_features, num_classes)
