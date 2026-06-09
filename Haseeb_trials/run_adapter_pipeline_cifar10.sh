@@ -41,7 +41,7 @@ OUTPUT_DIR=./outputs
 BASE_CKPT=${OUTPUT_DIR}/${DATASET}/linear_base/model.pt
 
 # 1) Train the frozen-backbone linear base.
-python -u train_LoRA_Qudratic_with_scratch_only.py \
+python -u train_LoRA_Qudratic.py \
   --dataset ${DATASET} \
   --stage linear_base \
   --output-dir ${OUTPUT_DIR} \
@@ -52,7 +52,7 @@ python -u train_LoRA_Qudratic_with_scratch_only.py \
   --print-trainable-names
 
 # 2) Train only the quadratic adapter on top of the frozen linear base.
-python -u train_LoRA_Qudratic_with_scratch_only.py \
+python -u train_LoRA_Qudratic.py \
   --dataset ${DATASET} \
   --stage quadratic_adapter \
   --base-checkpoint ${BASE_CKPT} \
@@ -65,7 +65,7 @@ python -u train_LoRA_Qudratic_with_scratch_only.py \
   --print-trainable-names
 
 # 3) Train only the LoRA adapter on top of the same frozen linear base.
-python -u train_LoRA_Qudratic_with_scratch_only.py \
+python -u train_LoRA_Qudratic.py \
   --dataset ${DATASET} \
   --stage lora_adapter \
   --base-checkpoint ${BASE_CKPT} \

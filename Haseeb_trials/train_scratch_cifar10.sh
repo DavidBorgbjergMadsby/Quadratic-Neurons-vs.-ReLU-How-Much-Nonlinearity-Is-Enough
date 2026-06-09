@@ -1,13 +1,13 @@
 #!/bin/bash
 #BSUB -q gpuv100
-#BSUB -J lora_cifar10
+#BSUB -J scratch_cifar10
 #BSUB -n 4
 #BSUB -gpu "num=1:mode=exclusive_process"
 #BSUB -R "span[hosts=1]"
 #BSUB -R "rusage[mem=8GB]"
 #BSUB -W 02:00
-#BSUB -o logs/lora_%J.out
-#BSUB -e logs/lora_%J.err
+#BSUB -o logs/scratch_%J.out
+#BSUB -e logs/scratch_%J.err
 
 set -euo pipefail
 
@@ -32,24 +32,15 @@ python --version
 python -c "import torch, torchvision, numpy; print('torch', torch.__version__); print('torchvision', torchvision.__version__); print('numpy', numpy.__version__); print('cuda?', torch.cuda.is_available())"
 
 DATASET=cifar10
-BASE_CKPT=./outputs/${DATASET}/linear_base/model.pt
-QUAD_RANK=4
-EPOCHS=10
+STAGE=scratch
+EPOCHS=50
 BATCH_SIZE=32
 LR=1e-3
 NUM_WORKERS=4
 
-if [ ! -f "${BASE_CKPT}" ]; then
-  echo "ERROR: Missing base checkpoint: ${BASE_CKPT}"
-  echo "Run train_linear_base_cifar10.sh first."
-  exit 1
-fi
-
-python -u train_LoRA_Qudratic.py \
+python -u train_LoRA_Qudratic_with_scratch_only.py \
   --dataset ${DATASET} \
-  --stage lora_adapter \
-  --base-checkpoint ${BASE_CKPT} \
-  --quad-rank ${QUAD_RANK} \
+  --stage ${STAGE} \
   --output-dir ./outputs \
   --epochs ${EPOCHS} \
   --batch-size ${BATCH_SIZE} \

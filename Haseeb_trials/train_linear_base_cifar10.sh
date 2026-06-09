@@ -1,5 +1,5 @@
 #!/bin/bash
-#BSUB -q gpuv100
+#BSUB -q gpua100
 #BSUB -J linear_base_cifar10
 #BSUB -n 4
 #BSUB -gpu "num=1:mode=exclusive_process"
@@ -37,7 +37,7 @@ BATCH_SIZE=32
 LR=1e-3
 NUM_WORKERS=4
 
-python -u train_LoRA_Qudratic_with_scratch_only.py \
+python -u train_LoRA_Qudratic.py \
   --dataset ${DATASET} \
   --stage linear_base \
   --output-dir ./outputs \

@@ -33,7 +33,7 @@ python --version
 
 python -c "import torch, torchvision, numpy; print('torch', torch.__version__); print('torchvision', torchvision.__version__); print('numpy', numpy.__version__); print('cuda?', torch.cuda.is_available())"
 
-python -u train_LoRA_Qudratic_with_scratch_only.py \
+python -u train_LoRA_Qudratic.py \
   --dataset cifar10 \
   --stage scratch \
   --output-dir ./outputs \

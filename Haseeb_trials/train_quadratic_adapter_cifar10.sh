@@ -45,7 +45,7 @@ if [ ! -f "${BASE_CKPT}" ]; then
   exit 1
 fi
 
-python -u train_LoRA_Qudratic_with_scratch_only.py \
+python -u train_LoRA_Qudratic.py \
   --dataset ${DATASET} \
   --stage quadratic_adapter \
   --base-checkpoint ${BASE_CKPT} \
