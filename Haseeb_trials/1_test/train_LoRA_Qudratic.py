@@ -611,21 +611,21 @@ if __name__ == "__main__":
 
 # 0) Train ResNet18 from scratch
 # This starts from random weights and trains the full network.
-# python train_LoRA_Qudratic_with_scratch_only.py \
+# python train_LoRA_Qudratic.py \
 #   --dataset cifar10 \
 #   --stage scratch \
 #   --epochs 50 \
 #   --lr 1e-3
 
 # 1) Train the frozen-backbone linear base
-# python train_LoRA_Qudratic_with_scratch_only.py \
+# python train_LoRA_Qudratic.py \
 #   --dataset cifar10 \
 #   --stage linear_base \
 #   --epochs 10 \
 #   --lr 1e-3
 
 # # 2) Train only the quadratic adapter on top of that same frozen linear base
-# python train_LoRA_Qudratic_with_scratch_only.py \
+# python train_LoRA_Qudratic.py \
 #   --dataset cifar10 \
 #   --stage quadratic_adapter \
 #   --base-checkpoint outputs/cifar10/linear_base/model.pt \
@@ -633,10 +633,12 @@ if __name__ == "__main__":
 #   --epochs 10 \
 #   --lr 1e-3
 
+#python train_LoRA_Qudratic.py --dataset cifar10 --stage quadratic_adapter --base-checkpoint outputs/cifar10/linear_base/model.pt --quad-rank 4 --epochs 10 --lr 1e-3
+
 # 3) Train only the LoRA adapter on top of that same frozen linear base
 # If you omit --lora-rank, the script auto-picks one that roughly matches
 # the quadratic head's trainable-parameter budget.
-# python train_LoRA_Qudratic_with_scratch_only.py \
+# python train_LoRA_Qudratic.py \
 #   --dataset cifar10 \
 #   --stage lora_adapter \
 #   --base-checkpoint outputs/cifar10/linear_base/model.pt \
