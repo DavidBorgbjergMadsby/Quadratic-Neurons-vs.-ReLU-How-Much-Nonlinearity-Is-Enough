@@ -350,7 +350,7 @@ class QuadraticDWConvAdapter(nn.Module):
         a = a.view(B, self.C, self.rank, H, W)
         b = b.view(B, self.C, self.rank, H, W)
 
-        quad = (a * b).sum(dim=2)
+        quad = (a * b).sum(dim=2) / self.rank   # Add this normalization
         return base_out + quad
 
 
