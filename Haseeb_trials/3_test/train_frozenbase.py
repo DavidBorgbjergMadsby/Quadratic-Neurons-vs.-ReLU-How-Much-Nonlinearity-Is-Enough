@@ -16,8 +16,7 @@ from torchvision.models import resnet18, ResNet18_Weights
 
 #python train_frozenbase.py --data-dir data/pizza_steak_sushi
 
-
-# python train_frozenbase.py --dataset cifar10 --head linear
+ 
 # python train_frozenbase.py --dataset cifar10 --head quadratic
 
 # python train_frozenbase.py --dataset flowers102 --head linear

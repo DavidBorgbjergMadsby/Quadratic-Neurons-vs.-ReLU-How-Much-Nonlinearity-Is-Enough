@@ -1,0 +1,221 @@
+Command: C:\Users\hasee\Miniconda3\envs\quad_lora\python.exe C:\Users\hasee\OneDrive\Dokumenter\github\Quadratic-Neurons-vs.-ReLU-How-Much-Nonlinearity-Is-Enough\Quadratic-Neurons-vs.-ReLU-How-Much-Nonlinearity-Is-Enough\Haseeb_trials\3_test\train_LoRA_Qudratic_local_best.py --dataset food101 --data-root C:\Users\hasee\OneDrive\Dokumenter\github\Quadratic-Neurons-vs.-ReLU-How-Much-Nonlinearity-Is-Enough\Quadratic-Neurons-vs.-ReLU-How-Much-Nonlinearity-Is-Enough\Haseeb_trials\3_test\data --output-dir C:\Users\hasee\quad_runs\food101_8q8l2f_20260611_002415\301_f_lr1em4_wd0p01 --batch-size 32 --num-workers 4 --grad-clip 5.0 --seed 42 --print-trainable-names --stage full_finetune --epochs 25 --lr 1e-4 --weight-decay 0.01
+CWD: C:\Users\hasee\OneDrive\Dokumenter\github\Quadratic-Neurons-vs.-ReLU-How-Much-Nonlinearity-Is-Enough\Quadratic-Neurons-vs.-ReLU-How-Much-Nonlinearity-Is-Enough\Haseeb_trials\3_test
+Started: 2026-06-12T01:19:31
+================================================================================
+Trainable params: 27,897,797 / 27,897,797 (100.00%)
+Trainable parameter tensors:
+  features.0.0.weight                 4,608
+  features.0.0.bias                      96
+  features.0.1.weight                    96
+  features.0.1.bias                      96
+  features.1.0.layer_scale               96
+  features.1.0.block.0.weight         4,704
+  features.1.0.block.0.bias              96
+  features.1.0.block.2.weight            96
+  features.1.0.block.2.bias              96
+  features.1.0.block.3.weight        36,864
+  features.1.0.block.3.bias             384
+  features.1.0.block.5.weight        36,864
+  features.1.0.block.5.bias              96
+  features.1.1.layer_scale               96
+  features.1.1.block.0.weight         4,704
+  features.1.1.block.0.bias              96
+  features.1.1.block.2.weight            96
+  features.1.1.block.2.bias              96
+  features.1.1.block.3.weight        36,864
+  features.1.1.block.3.bias             384
+  features.1.1.block.5.weight        36,864
+  features.1.1.block.5.bias              96
+  features.1.2.layer_scale               96
+  features.1.2.block.0.weight         4,704
+  features.1.2.block.0.bias              96
+  features.1.2.block.2.weight            96
+  features.1.2.block.2.bias              96
+  features.1.2.block.3.weight        36,864
+  features.1.2.block.3.bias             384
+  features.1.2.block.5.weight        36,864
+  features.1.2.block.5.bias              96
+  features.2.0.weight                    96
+  features.2.0.bias                      96
+  features.2.1.weight                73,728
+  features.2.1.bias                     192
+  features.3.0.layer_scale              192
+  features.3.0.block.0.weight         9,408
+  features.3.0.block.0.bias             192
+  features.3.0.block.2.weight           192
+  features.3.0.block.2.bias             192
+  features.3.0.block.3.weight       147,456
+  features.3.0.block.3.bias             768
+  features.3.0.block.5.weight       147,456
+  features.3.0.block.5.bias             192
+  features.3.1.layer_scale              192
+  features.3.1.block.0.weight         9,408
+  features.3.1.block.0.bias             192
+  features.3.1.block.2.weight           192
+  features.3.1.block.2.bias             192
+  features.3.1.block.3.weight       147,456
+  features.3.1.block.3.bias             768
+  features.3.1.block.5.weight       147,456
+  features.3.1.block.5.bias             192
+  features.3.2.layer_scale              192
+  features.3.2.block.0.weight         9,408
+  features.3.2.block.0.bias             192
+  features.3.2.block.2.weight           192
+  features.3.2.block.2.bias             192
+  features.3.2.block.3.weight       147,456
+  features.3.2.block.3.bias             768
+  features.3.2.block.5.weight       147,456
+  features.3.2.block.5.bias             192
+  features.4.0.weight                   192
+  features.4.0.bias                     192
+  features.4.1.weight               294,912
+  features.4.1.bias                     384
+  features.5.0.layer_scale              384
+  features.5.0.block.0.weight        18,816
+  features.5.0.block.0.bias             384
+  features.5.0.block.2.weight           384
+  features.5.0.block.2.bias             384
+  features.5.0.block.3.weight       589,824
+  features.5.0.block.3.bias           1,536
+  features.5.0.block.5.weight       589,824
+  features.5.0.block.5.bias             384
+  features.5.1.layer_scale              384
+  features.5.1.block.0.weight        18,816
+  features.5.1.block.0.bias             384
+  features.5.1.block.2.weight           384
+  features.5.1.block.2.bias             384
+  features.5.1.block.3.weight       589,824
+  features.5.1.block.3.bias           1,536
+  features.5.1.block.5.weight       589,824
+  features.5.1.block.5.bias             384
+  features.5.2.layer_scale              384
+  features.5.2.block.0.weight        18,816
+  features.5.2.block.0.bias             384
+  features.5.2.block.2.weight           384
+  features.5.2.block.2.bias             384
+  features.5.2.block.3.weight       589,824
+  features.5.2.block.3.bias           1,536
+  features.5.2.block.5.weight       589,824
+  features.5.2.block.5.bias             384
+  features.5.3.layer_scale              384
+  features.5.3.block.0.weight        18,816
+  features.5.3.block.0.bias             384
+  features.5.3.block.2.weight           384
+  features.5.3.block.2.bias             384
+  features.5.3.block.3.weight       589,824
+  features.5.3.block.3.bias           1,536
+  features.5.3.block.5.weight       589,824
+  features.5.3.block.5.bias             384
+  features.5.4.layer_scale              384
+  features.5.4.block.0.weight        18,816
+  features.5.4.block.0.bias             384
+  features.5.4.block.2.weight           384
+  features.5.4.block.2.bias             384
+  features.5.4.block.3.weight       589,824
+  features.5.4.block.3.bias           1,536
+  features.5.4.block.5.weight       589,824
+  features.5.4.block.5.bias             384
+  features.5.5.layer_scale              384
+  features.5.5.block.0.weight        18,816
+  features.5.5.block.0.bias             384
+  features.5.5.block.2.weight           384
+  features.5.5.block.2.bias             384
+  features.5.5.block.3.weight       589,824
+  features.5.5.block.3.bias           1,536
+  features.5.5.block.5.weight       589,824
+  features.5.5.block.5.bias             384
+  features.5.6.layer_scale              384
+  features.5.6.block.0.weight        18,816
+  features.5.6.block.0.bias             384
+  features.5.6.block.2.weight           384
+  features.5.6.block.2.bias             384
+  features.5.6.block.3.weight       589,824
+  features.5.6.block.3.bias           1,536
+  features.5.6.block.5.weight       589,824
+  features.5.6.block.5.bias             384
+  features.5.7.layer_scale              384
+  features.5.7.block.0.weight        18,816
+  features.5.7.block.0.bias             384
+  features.5.7.block.2.weight           384
+  features.5.7.block.2.bias             384
+  features.5.7.block.3.weight       589,824
+  features.5.7.block.3.bias           1,536
+  features.5.7.block.5.weight       589,824
+  features.5.7.block.5.bias             384
+  features.5.8.layer_scale              384
+  features.5.8.block.0.weight        18,816
+  features.5.8.block.0.bias             384
+  features.5.8.block.2.weight           384
+  features.5.8.block.2.bias             384
+  features.5.8.block.3.weight       589,824
+  features.5.8.block.3.bias           1,536
+  features.5.8.block.5.weight       589,824
+  features.5.8.block.5.bias             384
+  features.6.0.weight                   384
+  features.6.0.bias                     384
+  features.6.1.weight             1,179,648
+  features.6.1.bias                     768
+  features.7.0.layer_scale              768
+  features.7.0.block.0.weight        37,632
+  features.7.0.block.0.bias             768
+  features.7.0.block.2.weight           768
+  features.7.0.block.2.bias             768
+  features.7.0.block.3.weight     2,359,296
+  features.7.0.block.3.bias           3,072
+  features.7.0.block.5.weight     2,359,296
+  features.7.0.block.5.bias             768
+  features.7.1.layer_scale              768
+  features.7.1.block.0.weight        37,632
+  features.7.1.block.0.bias             768
+  features.7.1.block.2.weight           768
+  features.7.1.block.2.bias             768
+  features.7.1.block.3.weight     2,359,296
+  features.7.1.block.3.bias           3,072
+  features.7.1.block.5.weight     2,359,296
+  features.7.1.block.5.bias             768
+  features.7.2.layer_scale              768
+  features.7.2.block.0.weight        37,632
+  features.7.2.block.0.bias             768
+  features.7.2.block.2.weight           768
+  features.7.2.block.2.bias             768
+  features.7.2.block.3.weight     2,359,296
+  features.7.2.block.3.bias           3,072
+  features.7.2.block.5.weight     2,359,296
+  features.7.2.block.5.bias             768
+  classifier.0.weight                   768
+  classifier.0.bias                     768
+  classifier.2.weight                77,568
+  classifier.2.bias                     101
+[best] epoch 1 | test_acc: 0.8340
+[food101][full_finetune] Epoch 1/25 | train_loss: 1.3584 | train_acc: 0.6813 | test_loss: 0.5817 | test_acc: 0.8340
+[best] epoch 2 | test_acc: 0.8561
+[food101][full_finetune] Epoch 2/25 | train_loss: 0.5336 | train_acc: 0.8570 | test_loss: 0.5053 | test_acc: 0.8561
+[best] epoch 3 | test_acc: 0.8618
+[food101][full_finetune] Epoch 3/25 | train_loss: 0.2803 | train_acc: 0.9216 | test_loss: 0.5057 | test_acc: 0.8618
+[food101][full_finetune] Epoch 4/25 | train_loss: 0.1609 | train_acc: 0.9539 | test_loss: 0.5992 | test_acc: 0.8514
+[food101][full_finetune] Epoch 5/25 | train_loss: 0.1127 | train_acc: 0.9667 | test_loss: 0.6596 | test_acc: 0.8501
+[food101][full_finetune] Epoch 6/25 | train_loss: 0.0918 | train_acc: 0.9715 | test_loss: 0.6437 | test_acc: 0.8592
+[food101][full_finetune] Epoch 7/25 | train_loss: 0.0849 | train_acc: 0.9743 | test_loss: 0.6847 | test_acc: 0.8566
+[food101][full_finetune] Epoch 8/25 | train_loss: 0.0809 | train_acc: 0.9742 | test_loss: 0.7024 | test_acc: 0.8569
+[food101][full_finetune] Epoch 9/25 | train_loss: 0.0706 | train_acc: 0.9776 | test_loss: 0.7722 | test_acc: 0.8503
+[food101][full_finetune] Epoch 10/25 | train_loss: 0.0677 | train_acc: 0.9797 | test_loss: 0.7758 | test_acc: 0.8503
+[food101][full_finetune] Epoch 11/25 | train_loss: 0.0628 | train_acc: 0.9805 | test_loss: 0.8546 | test_acc: 0.8391
+[food101][full_finetune] Epoch 12/25 | train_loss: 0.0597 | train_acc: 0.9817 | test_loss: 0.7646 | test_acc: 0.8565
+[food101][full_finetune] Epoch 13/25 | train_loss: 0.0569 | train_acc: 0.9827 | test_loss: 0.8848 | test_acc: 0.8394
+[food101][full_finetune] Epoch 14/25 | train_loss: 0.0591 | train_acc: 0.9820 | test_loss: 0.8183 | test_acc: 0.8523
+[food101][full_finetune] Epoch 15/25 | train_loss: 0.0571 | train_acc: 0.9828 | test_loss: 0.8680 | test_acc: 0.8467
+[food101][full_finetune] Epoch 16/25 | train_loss: 0.0545 | train_acc: 0.9828 | test_loss: 0.8379 | test_acc: 0.8519
+[food101][full_finetune] Epoch 17/25 | train_loss: 0.0503 | train_acc: 0.9840 | test_loss: 0.9349 | test_acc: 0.8400
+[food101][full_finetune] Epoch 18/25 | train_loss: 0.0506 | train_acc: 0.9846 | test_loss: 0.9124 | test_acc: 0.8409
+[food101][full_finetune] Epoch 19/25 | train_loss: 0.0477 | train_acc: 0.9856 | test_loss: 0.8351 | test_acc: 0.8559
+[food101][full_finetune] Epoch 20/25 | train_loss: 0.0459 | train_acc: 0.9856 | test_loss: 0.8949 | test_acc: 0.8457
+[food101][full_finetune] Epoch 21/25 | train_loss: 0.0452 | train_acc: 0.9860 | test_loss: 0.8893 | test_acc: 0.8516
+[food101][full_finetune] Epoch 22/25 | train_loss: 0.0453 | train_acc: 0.9869 | test_loss: 0.9326 | test_acc: 0.8393
+[food101][full_finetune] Epoch 23/25 | train_loss: 0.0444 | train_acc: 0.9865 | test_loss: 0.9300 | test_acc: 0.8468
+[food101][full_finetune] Epoch 24/25 | train_loss: 0.0413 | train_acc: 0.9874 | test_loss: 0.9252 | test_acc: 0.8464
+[food101][full_finetune] Epoch 25/25 | train_loss: 0.0410 | train_acc: 0.9874 | test_loss: 0.9525 | test_acc: 0.8437
+Training time: 10423.45 seconds
+Saved outputs to: C:\Users\hasee\quad_runs\food101_8q8l2f_20260611_002415\301_f_lr1em4_wd0p01\food101\full_finetune
+================================================================================
+Finished: 2026-06-12T04:13:18
+Exit code: 0
