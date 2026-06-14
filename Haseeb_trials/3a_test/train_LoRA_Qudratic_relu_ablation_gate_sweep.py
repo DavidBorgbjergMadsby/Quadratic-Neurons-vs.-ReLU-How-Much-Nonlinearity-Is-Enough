@@ -357,12 +357,19 @@ def save_checkpoint(
     args_dict: dict,
     resolved_lora_rank: int = None,
     resolved_lora_alpha: float = None,
+    include_model_state: bool = False,
 ):
+    """
+    Save a compact checkpoint by default.
+
+    Adapter runs only need the gate-specific linear_base checkpoint.
+    Therefore, the linear_base checkpoint stores the linear head and metadata,
+    while adapter checkpoints can be skipped to save disk space.
+    """
     output_dir.mkdir(parents=True, exist_ok=True)
 
     checkpoint = {
         "stage": stage,
-        "model_state_dict": model.state_dict(),
         "linear_head_state_dict": extract_linear_head_state_dict(model, stage),
         "class_names": classes,
         "num_classes": len(classes),
@@ -373,6 +380,9 @@ def save_checkpoint(
         "resolved_lora_rank": resolved_lora_rank,
         "resolved_lora_alpha": resolved_lora_alpha,
     }
+
+    if include_model_state:
+        checkpoint["model_state_dict"] = model.state_dict()
 
     torch.save(checkpoint, output_dir / filename)
 
@@ -685,16 +695,37 @@ def run_experiment(args, train_loader, test_loader, class_names, device) -> Path
     if args_dict["base_checkpoint"] is not None:
         args_dict["base_checkpoint"] = str(args_dict["base_checkpoint"])
 
-    save_checkpoint(
-        model=model,
-        classes=class_names,
-        output_dir=output_dir,
-        filename="model.pt",
-        stage=args.stage,
-        args_dict=args_dict,
-        resolved_lora_rank=resolved_lora_rank,
-        resolved_lora_alpha=resolved_lora_alpha,
-    )
+    if args.stage == "linear_base":
+        save_checkpoint(
+            model=model,
+            classes=class_names,
+            output_dir=output_dir,
+            filename="model.pt",
+            stage=args.stage,
+            args_dict=args_dict,
+            resolved_lora_rank=resolved_lora_rank,
+            resolved_lora_alpha=resolved_lora_alpha,
+            include_model_state=False,
+        )
+        print(f"Saved compact linear_base checkpoint to: {output_dir / 'model.pt'}")
+    elif args.save_adapter_models:
+        save_checkpoint(
+            model=model,
+            classes=class_names,
+            output_dir=output_dir,
+            filename="model.pt",
+            stage=args.stage,
+            args_dict=args_dict,
+            resolved_lora_rank=resolved_lora_rank,
+            resolved_lora_alpha=resolved_lora_alpha,
+            include_model_state=True,
+        )
+        print(f"Saved full adapter checkpoint to: {output_dir / 'model.pt'}")
+    else:
+        print(
+            f"Skipping model.pt for stage='{args.stage}' to save disk space. "
+            "metrics.json will still be saved."
+        )
 
     with open(output_dir / "metrics.json", "w") as f:
         json.dump(history, f, indent=2)
@@ -749,6 +780,15 @@ def main():
         "--print-trainable-names",
         action="store_true",
         help="Print names and sizes of all trainable parameter tensors.",
+    )
+
+    parser.add_argument(
+        "--save-adapter-models",
+        action="store_true",
+        help=(
+            "Also save model.pt for quadratic_adapter/lora_adapter. "
+            "By default, only linear_base saves model.pt; adapters save metrics.json only."
+        ),
     )
 
     # New convenience mode:
