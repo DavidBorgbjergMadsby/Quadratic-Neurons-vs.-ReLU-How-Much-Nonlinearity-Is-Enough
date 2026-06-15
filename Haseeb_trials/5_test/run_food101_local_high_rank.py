@@ -465,3 +465,17 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
+    
+# python run_food101_local_high_rank.py \
+#   --train-script train_LoRA_Qudratic.py \
+#   --data-root ~/Desktop/Fagprojekt/4_test/data \
+#   --output-root ./outputs/food101_local_atrous_budget_scaling \
+#   --seeds 21 \
+#   --batch-size 32 \
+#   --num-workers 2
+
+# python run_food101_local_high_rank.py --dry-run
+
+# python run_food101_local_high_rank.py \
+#   --skip-linear-base-if-exists \
+#   --seeds 21
