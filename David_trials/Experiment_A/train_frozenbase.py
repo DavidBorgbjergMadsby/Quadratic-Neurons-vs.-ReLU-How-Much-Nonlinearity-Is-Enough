@@ -10,11 +10,12 @@ import torch
 import torch.nn as nn
 from torch.utils.data import DataLoader
 from torchvision import datasets, transforms
-#from torchvision.models import efficientnet_b0, EfficientNet_B0_Weights
+
+# from torchvision.models import efficientnet_b0, EfficientNet_B0_Weights
 from torchvision.models import resnet18, ResNet18_Weights
 
 
-#python train_frozenbase.py --data-dir data/pizza_steak_sushi
+# python train_frozenbase.py --data-dir data/pizza_steak_sushi
 
 
 # python train_frozenbase.py --dataset cifar10 --head linear
@@ -33,6 +34,7 @@ from torchvision.models import resnet18, ResNet18_Weights
 # python train_frozenbase.py --dataset cifar10 --head lora
 # python train_frozenbase.py --dataset cifar10 --head quadratic
 
+
 def set_seed(seed: int = 42) -> None:
     random.seed(seed)
     np.random.seed(seed)
@@ -44,6 +46,7 @@ def set_seed(seed: int = 42) -> None:
 
 def get_device() -> torch.device:
     return torch.device("cuda" if torch.cuda.is_available() else "cpu")
+
 
 # class QuadraticHead(nn.Module):
 #     def __init__(self, in_features: int, num_classes: int):
@@ -70,6 +73,7 @@ class QuadraticAdapterHead(nn.Module):
 
     This is a low-rank quadratic form per class.
     """
+
     def __init__(self, base_linear: nn.Linear, rank: int = 4, freeze_base: bool = True):
         super().__init__()
         self.in_features = base_linear.in_features
@@ -78,9 +82,7 @@ class QuadraticAdapterHead(nn.Module):
 
         # Reuse pretrained / existing linear classifier term
         self.base = nn.Linear(
-            self.in_features,
-            self.out_features,
-            bias=base_linear.bias is not None
+            self.in_features, self.out_features, bias=base_linear.bias is not None
         )
         self.base.load_state_dict(base_linear.state_dict())
 
@@ -109,7 +111,8 @@ class QuadraticAdapterHead(nn.Module):
         quad_out = (ax * bx).sum(dim=-1)
 
         return linear_out + quad_out
-    
+
+
 class LoRAAdapterHead(nn.Module):
     """
     LoRA-style classifier head:
@@ -123,7 +126,14 @@ class LoRAAdapterHead(nn.Module):
         A: [r, d]
         B: [C, r]
     """
-    def __init__(self, base_linear: nn.Linear, rank: int = 4, alpha: float = 4.0, freeze_base: bool = False):
+
+    def __init__(
+        self,
+        base_linear: nn.Linear,
+        rank: int = 4,
+        alpha: float = 4.0,
+        freeze_base: bool = False,
+    ):
         super().__init__()
         self.in_features = base_linear.in_features
         self.out_features = base_linear.out_features
@@ -131,9 +141,7 @@ class LoRAAdapterHead(nn.Module):
         self.scaling = alpha / rank
 
         self.base = nn.Linear(
-            self.in_features,
-            self.out_features,
-            bias=base_linear.bias is not None
+            self.in_features, self.out_features, bias=base_linear.bias is not None
         )
         self.base.load_state_dict(base_linear.state_dict())
 
@@ -150,10 +158,11 @@ class LoRAAdapterHead(nn.Module):
         nn.init.zeros_(self.B)
 
     def forward(self, x):
-        base_out = self.base(x)                         # [B, C]
-        lora_out = (x @ self.A.t()) @ self.B.t()       # [B, C]
+        base_out = self.base(x)  # [B, C]
+        lora_out = (x @ self.A.t()) @ self.B.t()  # [B, C]
         return base_out + self.scaling * lora_out
-    
+
+
 # def create_dataloadersold(data_dir: Path, batch_size: int, num_workers: int):
 #     train_dir = data_dir / "train"
 #     test_dir = data_dir / "test"
@@ -182,6 +191,7 @@ class LoRAAdapterHead(nn.Module):
 #     )
 
 #     return train_loader, test_loader, train_data.classes
+
 
 def create_model(num_classes: int, device: torch.device, head_type: str) -> nn.Module:
     weights = ResNet18_Weights.DEFAULT
@@ -221,40 +231,61 @@ def get_dataset_pair(dataset_name: str, root: Path, transform):
     dataset_name = dataset_name.lower()
 
     if dataset_name == "cifar10":
-        train_data = datasets.CIFAR10(root=root, train=True, download=True, transform=transform)
-        test_data = datasets.CIFAR10(root=root, train=False, download=True, transform=transform)
+        train_data = datasets.CIFAR10(
+            root=root, train=True, download=True, transform=transform
+        )
+        test_data = datasets.CIFAR10(
+            root=root, train=False, download=True, transform=transform
+        )
         class_names = train_data.classes
 
     elif dataset_name == "cifar100":
-        train_data = datasets.CIFAR100(root=root, train=True, download=True, transform=transform)
-        test_data = datasets.CIFAR100(root=root, train=False, download=True, transform=transform)
+        train_data = datasets.CIFAR100(
+            root=root, train=True, download=True, transform=transform
+        )
+        test_data = datasets.CIFAR100(
+            root=root, train=False, download=True, transform=transform
+        )
         class_names = train_data.classes
 
     elif dataset_name == "flowers102":
-        train_data = datasets.Flowers102(root=root, split="train", download=True, transform=transform)
-        test_data = datasets.Flowers102(root=root, split="test", download=True, transform=transform)
+        train_data = datasets.Flowers102(
+            root=root, split="train", download=True, transform=transform
+        )
+        test_data = datasets.Flowers102(
+            root=root, split="test", download=True, transform=transform
+        )
         class_names = [str(i) for i in range(102)]
 
     elif dataset_name == "pets":
-        train_data = datasets.OxfordIIITPet(root=root, split="trainval", download=True, transform=transform)
-        test_data = datasets.OxfordIIITPet(root=root, split="test", download=True, transform=transform)
+        train_data = datasets.OxfordIIITPet(
+            root=root, split="trainval", download=True, transform=transform
+        )
+        test_data = datasets.OxfordIIITPet(
+            root=root, split="test", download=True, transform=transform
+        )
         class_names = train_data.classes
 
     elif dataset_name == "food101":
-        train_data = datasets.Food101(root=root, split="train", download=True, transform=transform)
-        test_data = datasets.Food101(root=root, split="test", download=True, transform=transform)
+        train_data = datasets.Food101(
+            root=root, split="train", download=True, transform=transform
+        )
+        test_data = datasets.Food101(
+            root=root, split="test", download=True, transform=transform
+        )
         class_names = train_data.classes
 
     else:
         raise ValueError(
-            "dataset_name must be one of: "
-            "cifar10, cifar100, flowers102, pets, food101"
+            "dataset_name must be one of: cifar10, cifar100, flowers102, pets, food101"
         )
 
     return train_data, test_data, class_names
 
 
-def create_dataloaders(dataset_name: str, root: Path, batch_size: int, num_workers: int):
+def create_dataloaders(
+    dataset_name: str, root: Path, batch_size: int, num_workers: int
+):
     weights = ResNet18_Weights.DEFAULT
     auto_transforms = weights.transforms()
 
@@ -281,6 +312,7 @@ def create_dataloaders(dataset_name: str, root: Path, batch_size: int, num_worke
     )
 
     return train_loader, test_loader, class_names
+
 
 def train_one_epoch(model, dataloader, loss_fn, optimizer, device):
     model.train()
@@ -342,16 +374,27 @@ def save_checkpoint(model, classes, output_dir: Path, filename: str):
 def report_params(model):
     total = sum(p.numel() for p in model.parameters())
     trainable = sum(p.numel() for p in model.parameters() if p.requires_grad)
-    print(f"Trainable params: {trainable:,} / {total:,} ({100*trainable/total:.2f}%)")
+    print(
+        f"Trainable params: {trainable:,} / {total:,} ({100 * trainable / total:.2f}%)"
+    )
+
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument("--dataset", type=str, required=True,
-                        choices=["cifar10", "cifar100", "flowers102", "pets", "food101"])
+    parser.add_argument(
+        "--dataset",
+        type=str,
+        required=True,
+        choices=["cifar10", "cifar100", "flowers102", "pets", "food101"],
+    )
     parser.add_argument("--data-root", type=str, default="data")
     parser.add_argument("--output-dir", type=str, default="outputs")
-    parser.add_argument("--head", type=str, default="linear",
-                    choices=["linear", "mlp", "quadratic", "lora"])
+    parser.add_argument(
+        "--head",
+        type=str,
+        default="linear",
+        choices=["linear", "mlp", "quadratic", "lora"],
+    )
     parser.add_argument("--epochs", type=int, default=2)
     parser.add_argument("--batch-size", type=int, default=32)
     parser.add_argument("--lr", type=float, default=1e-3)
@@ -377,8 +420,8 @@ def main():
         device=device,
         head_type=args.head,
     )
-    
-    print(f"Trainable params: {report_params(model):,}")
+
+    report_params(model)
 
     loss_fn = nn.CrossEntropyLoss()
     optimizer = torch.optim.Adam(
@@ -398,7 +441,9 @@ def main():
     start_time = time.time()
 
     for epoch in range(args.epochs):
-        train_loss, train_acc = train_one_epoch(model, train_loader, loss_fn, optimizer, device)
+        train_loss, train_acc = train_one_epoch(
+            model, train_loader, loss_fn, optimizer, device
+        )
         test_loss, test_acc = evaluate(model, test_loader, loss_fn, device)
 
         history["train_loss"].append(train_loss)
@@ -408,7 +453,7 @@ def main():
 
         print(
             f"[{args.dataset}][{args.head}] "
-            f"Epoch {epoch+1}/{args.epochs} | "
+            f"Epoch {epoch + 1}/{args.epochs} | "
             f"train_loss: {train_loss:.4f} | train_acc: {train_acc:.4f} | "
             f"test_loss: {test_loss:.4f} | test_acc: {test_acc:.4f}"
         )
