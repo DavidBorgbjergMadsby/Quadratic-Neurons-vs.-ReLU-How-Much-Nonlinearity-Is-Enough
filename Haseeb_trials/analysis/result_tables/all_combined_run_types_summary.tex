@@ -1,0 +1,64 @@
+\begingroup
+\scriptsize
+\setlength{\tabcolsep}{3pt}
+\renewcommand{\arraystretch}{0.9}
+
+\begin{longtable}{lllccccc}
+\toprule
+Run ID & Model & Config & Trainable params & Epochs & Test acc. & Adapter time & Seeds \\
+\midrule
+\endfirsthead
+\toprule
+Run ID & Model & Config & Trainable params & Epochs & Test acc. & Adapter time & Seeds \\
+\midrule
+\endhead
+\midrule
+\multicolumn{8}{r}{Continued on next page} \\
+\midrule
+\endfoot
+\bottomrule
+\endlastfoot
+000 & Linear base & head only & 77.7K & 30 & 78.55\% $\pm$ 0.38 & 1h 13m & 7 \\
+116 & Quad, atrous & last stage, $r=2$, lr=$1{\times}10^{-4}$, head & 160.6K & 16 & 79.32\% $\pm$ 0.02 & 38m & 3 \\
+112 & Quad, atrous & all, $r=1$, lr=$1{\times}10^{-4}$, head & 196.9K & 16 & 80.35\% $\pm$ 0.03 & 55m & 3 \\
+110 & Quad, atrous & all, $r=2$, lr=$3{\times}10^{-4}$, head & 316.1K & 16 & 80.81\% $\pm$ 0.06 & 1h 19m & 3 \\
+115 & Quad, atrous & all, $r=2$, lr=$1{\times}10^{-4}$, head & 316.1K & 16 & 80.51\% $\pm$ 0.08 & 1h 19m & 3 \\
+113 & Quad, atrous & all, $r=2$, lr=$1{\times}10^{-4}$, head & 316.1K & 16 & 80.39\% $\pm$ 0.11 & 1h 19m & 3 \\
+109 & Quad, atrous & all, $r=2$, lr=$1{\times}10^{-4}$, head & 316.1K & 16 & 80.32\% $\pm$ 0.11 & 1h 19m & 3 \\
+114 & Quad, atrous & all, $r=2$, lr=$1{\times}10^{-4}$, head & 316.1K & 16 & 80.26\% $\pm$ 0.09 & 1h 19m & 3 \\
+111 & Quad, atrous & all, $r=2$, lr=3e-05, head & 316.1K & 16 & 80.04\% $\pm$ 0.04 & 1h 19m & 3 \\
+118 & Quad, atrous & all, $r=4$, lr=$3{\times}10^{-4}$, head & 554.6K & 16 & 80.89\% $\pm$ 0.04 & 1h 30m & 2 \\
+117 & Quad, atrous & all, $r=4$, lr=$1{\times}10^{-4}$, head & 554.6K & 16 & 80.33\% $\pm$ 0.02 & 1h 29m & 2 \\
+120 & Quad, atrous & all, $r=8$, lr=$3{\times}10^{-4}$, head & 1.0M & 16 & 80.88\% $\pm$ 0.05 & 3h 44m & 2 \\
+119 & Quad, atrous & all, $r=8$, lr=$1{\times}10^{-4}$, head & 1.0M & 16 & 80.34\% $\pm$ 0.04 & 3h 44m & 2 \\
+101 & Quad, non-atrous & last stage, $r=1$, lr=$1{\times}10^{-3}$, head & 225.8K & 12 & 79.15\% $\pm$ 0.17 & 29m & 5 \\
+102 & Quad, non-atrous & last stage, $r=2$, lr=$1{\times}10^{-3}$, head & 451.6K & 12 & 79.21\% $\pm$ 0.17 & 29m & 5 \\
+104 & Quad, non-atrous & last stage, $r=2$, lr=$3{\times}10^{-4}$, head & 451.6K & 12 & 79.15\% $\pm$ 0.11 & 29m & 5 \\
+107 & Quad, non-atrous & last stage, $r=2$, lr=$1{\times}10^{-4}$, head & 529.3K & 12 & 79.39\% $\pm$ 0.13 & 29m & 5 \\
+105 & Quad, non-atrous & all, $r=1$, lr=$3{\times}10^{-4}$, head & 649.2K & 12 & 80.87\% $\pm$ 0.09 & 1h 03m & 5 \\
+103 & Quad, non-atrous & last stage, $r=4$, lr=$1{\times}10^{-3}$, head & 903.2K & 12 & 79.19\% $\pm$ 0.12 & 29m & 5 \\
+106 & Quad, non-atrous & all, $r=2$, lr=$3{\times}10^{-4}$, head & 1.3M & 12 & 80.91\% $\pm$ 0.11 & 1h 49m & 5 \\
+108 & Quad, non-atrous & all, $r=2$, lr=$1{\times}10^{-4}$, head & 1.4M & 12 & 81.25\% $\pm$ 0.26 & 1h 49m & 5 \\
+201 & LoRA & last stage, $r=1$, lr=$1{\times}10^{-3}$, head & 115.2K & 12 & 79.48\% $\pm$ 0.09 & 29m & 5 \\
+202 & LoRA & last stage, $r=2$, lr=$1{\times}10^{-3}$, head & 230.4K & 12 & 79.51\% $\pm$ 0.13 & 29m & 5 \\
+204 & LoRA & last stage, $r=2$, lr=$3{\times}10^{-4}$, head & 230.4K & 12 & 79.49\% $\pm$ 0.14 & 29m & 5 \\
+207 & LoRA & last stage, $r=2$, lr=$1{\times}10^{-4}$, head & 308.1K & 12 & 79.56\% $\pm$ 0.15 & 29m & 5 \\
+213 & LoRA & last stage, $r=2$, lr=$1{\times}10^{-4}$, head & 308.1K & 16 & 79.56\% $\pm$ 0.06 & 39m & 3 \\
+205 & LoRA & all, $r=1$, lr=$3{\times}10^{-4}$, head & 331.2K & 12 & 81.29\% $\pm$ 0.13 & 45m & 5 \\
+211 & LoRA & all, $r=1$, lr=$1{\times}10^{-4}$, head & 408.9K & 16 & 81.26\% $\pm$ 0.07 & 1h 01m & 3 \\
+203 & LoRA & last stage, $r=4$, lr=$1{\times}10^{-3}$, head & 460.8K & 12 & 79.46\% $\pm$ 0.16 & 29m & 5 \\
+206 & LoRA & all, $r=2$, lr=$3{\times}10^{-4}$, head & 662.4K & 12 & 81.30\% $\pm$ 0.07 & 1h 09m & 5 \\
+208 & LoRA & all, $r=2$, lr=$1{\times}10^{-4}$, head & 740.1K & 12 & 81.54\% $\pm$ 0.29 & 1h 09m & 5 \\
+212 & LoRA & all, $r=2$, lr=$1{\times}10^{-4}$, head & 740.1K & 16 & 81.49\% $\pm$ 0.04 & 1h 30m & 3 \\
+209 & LoRA & all, $r=2$, lr=$1{\times}10^{-4}$, head & 740.1K & 16 & 81.46\% $\pm$ 0.05 & 1h 30m & 3 \\
+210 & LoRA & all, $r=2$, lr=$3{\times}10^{-4}$, head & 740.1K & 16 & 81.43\% $\pm$ 0.06 & 1h 30m & 3 \\
+214 & LoRA & all, $r=4$, lr=$1{\times}10^{-4}$, head & 1.4M & 16 & 81.53\% $\pm$ 0.10 & 1h 40m & 2 \\
+215 & LoRA & all, $r=4$, lr=$3{\times}10^{-4}$, head & 1.4M & 16 & 81.47\% $\pm$ 0.08 & 1h 40m & 2 \\
+216 & LoRA & all, $r=8$, lr=$1{\times}10^{-4}$, head & 2.7M & 16 & 81.48\% $\pm$ 0.10 & 2h 21m & 2 \\
+217 & LoRA & all, $r=8$, lr=$3{\times}10^{-4}$, head & 2.7M & 16 & 81.32\% $\pm$ 0.07 & 2h 20m & 2 \\
+301 & Full fine-tune & all, $1{\times}10^{-4}$ & 27.9M & 25 & 86.41\% $\pm$ 0.29 & 1h 44m & 7 \\
+302 & Full fine-tune & all, 3e-05 & 27.9M & 25 & 86.36\% $\pm$ 0.27 & 1h 44m & 7 \\
+\caption{Experiment (C): Summary of completed Food101 configurations. Accuracy and adapter training time are averaged across seeds. Configs with ``head'' indicate that the classifier head was also trainable.}
+\label{tab:all_combined_run_types_summary}
+\end{longtable}
+\endgroup

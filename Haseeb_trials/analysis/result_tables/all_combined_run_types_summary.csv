@@ -1,0 +1,41 @@
+Run ID,Model,Config,Trainable params,Epochs,Test acc.,Adapter time,Seeds,run_name
+000,Linear base,head only,77.7K,30,78.55\% $\pm$ 0.38,1h 13m,7,000_lin_lr1e3_wd0p05
+116,"Quad, atrous","last stage, $r=2$, lr=$1{\times}10^{-4}$, head",160.6K,16,79.32\% $\pm$ 0.02,38m,3,116_q_ls_r2_h1_lr1em4_wd0p0_k3d3
+112,"Quad, atrous","all, $r=1$, lr=$1{\times}10^{-4}$, head",196.9K,16,80.35\% $\pm$ 0.03,55m,3,112_q_all_r1_h1_lr1em4_wd0p0_k3d3
+110,"Quad, atrous","all, $r=2$, lr=$3{\times}10^{-4}$, head",316.1K,16,80.81\% $\pm$ 0.06,1h 19m,3,110_q_all_r2_h1_lr3em4_wd0p0_k3d3
+115,"Quad, atrous","all, $r=2$, lr=$1{\times}10^{-4}$, head",316.1K,16,80.51\% $\pm$ 0.08,1h 19m,3,115_q_all_r2_h1_lr1em4_wd0p0_k3d3_a2p0
+113,"Quad, atrous","all, $r=2$, lr=$1{\times}10^{-4}$, head",316.1K,16,80.39\% $\pm$ 0.11,1h 19m,3,113_q_all_r2_h1_lr1em4_wd0p05_k3d3
+109,"Quad, atrous","all, $r=2$, lr=$1{\times}10^{-4}$, head",316.1K,16,80.32\% $\pm$ 0.11,1h 19m,3,109_q_all_r2_h1_lr1em4_wd0p0_k3d3
+114,"Quad, atrous","all, $r=2$, lr=$1{\times}10^{-4}$, head",316.1K,16,80.26\% $\pm$ 0.09,1h 19m,3,114_q_all_r2_h1_lr1em4_wd0p0_k3d3_a0p5
+111,"Quad, atrous","all, $r=2$, lr=3e-05, head",316.1K,16,80.04\% $\pm$ 0.04,1h 19m,3,111_q_all_r2_h1_lr3em5_wd0p0_k3d3
+118,"Quad, atrous","all, $r=4$, lr=$3{\times}10^{-4}$, head",554.6K,16,80.89\% $\pm$ 0.04,1h 30m,2,118_q_all_r4_h1_lr3em4_wd0p0_k3d3
+117,"Quad, atrous","all, $r=4$, lr=$1{\times}10^{-4}$, head",554.6K,16,80.33\% $\pm$ 0.02,1h 29m,2,117_q_all_r4_h1_lr1em4_wd0p0_k3d3
+120,"Quad, atrous","all, $r=8$, lr=$3{\times}10^{-4}$, head",1.0M,16,80.88\% $\pm$ 0.05,3h 44m,2,120_q_all_r8_h1_lr3em4_wd0p0_k3d3
+119,"Quad, atrous","all, $r=8$, lr=$1{\times}10^{-4}$, head",1.0M,16,80.34\% $\pm$ 0.04,3h 44m,2,119_q_all_r8_h1_lr1em4_wd0p0_k3d3
+101,"Quad, non-atrous","last stage, $r=1$, lr=$1{\times}10^{-3}$, head",225.8K,12,79.15\% $\pm$ 0.17,29m,5,101_q_ls_r1_h0_lr1em3_wd0p0
+102,"Quad, non-atrous","last stage, $r=2$, lr=$1{\times}10^{-3}$, head",451.6K,12,79.21\% $\pm$ 0.17,29m,5,102_q_ls_r2_h0_lr1em3_wd0p0
+104,"Quad, non-atrous","last stage, $r=2$, lr=$3{\times}10^{-4}$, head",451.6K,12,79.15\% $\pm$ 0.11,29m,5,104_q_ls_r2_h0_lr3em4_wd0p01
+107,"Quad, non-atrous","last stage, $r=2$, lr=$1{\times}10^{-4}$, head",529.3K,12,79.39\% $\pm$ 0.13,29m,5,107_q_ls_r2_h1_lr1em4_wd0p0
+105,"Quad, non-atrous","all, $r=1$, lr=$3{\times}10^{-4}$, head",649.2K,12,80.87\% $\pm$ 0.09,1h 03m,5,105_q_all_r1_h0_lr3em4_wd0p0
+103,"Quad, non-atrous","last stage, $r=4$, lr=$1{\times}10^{-3}$, head",903.2K,12,79.19\% $\pm$ 0.12,29m,5,103_q_ls_r4_h0_lr1em3_wd0p0
+106,"Quad, non-atrous","all, $r=2$, lr=$3{\times}10^{-4}$, head",1.3M,12,80.91\% $\pm$ 0.11,1h 49m,5,106_q_all_r2_h0_lr3em4_wd0p0
+108,"Quad, non-atrous","all, $r=2$, lr=$1{\times}10^{-4}$, head",1.4M,12,81.25\% $\pm$ 0.26,1h 49m,5,108_q_all_r2_h1_lr1em4_wd0p0
+201,LoRA,"last stage, $r=1$, lr=$1{\times}10^{-3}$, head",115.2K,12,79.48\% $\pm$ 0.09,29m,5,201_l_ls_r1_h0_lr1em3_wd0p0
+202,LoRA,"last stage, $r=2$, lr=$1{\times}10^{-3}$, head",230.4K,12,79.51\% $\pm$ 0.13,29m,5,202_l_ls_r2_h0_lr1em3_wd0p0
+204,LoRA,"last stage, $r=2$, lr=$3{\times}10^{-4}$, head",230.4K,12,79.49\% $\pm$ 0.14,29m,5,204_l_ls_r2_h0_lr3em4_wd0p01
+207,LoRA,"last stage, $r=2$, lr=$1{\times}10^{-4}$, head",308.1K,12,79.56\% $\pm$ 0.15,29m,5,207_l_ls_r2_h1_lr1em4_wd0p0
+213,LoRA,"last stage, $r=2$, lr=$1{\times}10^{-4}$, head",308.1K,16,79.56\% $\pm$ 0.06,39m,3,213_l_ls_r2_h1_lr1em4_wd0p0
+205,LoRA,"all, $r=1$, lr=$3{\times}10^{-4}$, head",331.2K,12,81.29\% $\pm$ 0.13,45m,5,205_l_all_r1_h0_lr3em4_wd0p0
+211,LoRA,"all, $r=1$, lr=$1{\times}10^{-4}$, head",408.9K,16,81.26\% $\pm$ 0.07,1h 01m,3,211_l_all_r1_h1_lr1em4_wd0p0
+203,LoRA,"last stage, $r=4$, lr=$1{\times}10^{-3}$, head",460.8K,12,79.46\% $\pm$ 0.16,29m,5,203_l_ls_r4_h0_lr1em3_wd0p0
+206,LoRA,"all, $r=2$, lr=$3{\times}10^{-4}$, head",662.4K,12,81.30\% $\pm$ 0.07,1h 09m,5,206_l_all_r2_h0_lr3em4_wd0p0
+208,LoRA,"all, $r=2$, lr=$1{\times}10^{-4}$, head",740.1K,12,81.54\% $\pm$ 0.29,1h 09m,5,208_l_all_r2_h1_lr1em4_wd0p0
+212,LoRA,"all, $r=2$, lr=$1{\times}10^{-4}$, head",740.1K,16,81.49\% $\pm$ 0.04,1h 30m,3,212_l_all_r2_h1_lr1em4_wd0p05
+209,LoRA,"all, $r=2$, lr=$1{\times}10^{-4}$, head",740.1K,16,81.46\% $\pm$ 0.05,1h 30m,3,209_l_all_r2_h1_lr1em4_wd0p0
+210,LoRA,"all, $r=2$, lr=$3{\times}10^{-4}$, head",740.1K,16,81.43\% $\pm$ 0.06,1h 30m,3,210_l_all_r2_h1_lr3em4_wd0p0
+214,LoRA,"all, $r=4$, lr=$1{\times}10^{-4}$, head",1.4M,16,81.53\% $\pm$ 0.10,1h 40m,2,214_l_all_r4_h1_lr1em4_wd0p0
+215,LoRA,"all, $r=4$, lr=$3{\times}10^{-4}$, head",1.4M,16,81.47\% $\pm$ 0.08,1h 40m,2,215_l_all_r4_h1_lr3em4_wd0p0
+216,LoRA,"all, $r=8$, lr=$1{\times}10^{-4}$, head",2.7M,16,81.48\% $\pm$ 0.10,2h 21m,2,216_l_all_r8_h1_lr1em4_wd0p0
+217,LoRA,"all, $r=8$, lr=$3{\times}10^{-4}$, head",2.7M,16,81.32\% $\pm$ 0.07,2h 20m,2,217_l_all_r8_h1_lr3em4_wd0p0
+301,Full fine-tune,"all, $1{\times}10^{-4}$",27.9M,25,86.41\% $\pm$ 0.29,1h 44m,7,301_f_lr1e4_wd0p01
+302,Full fine-tune,"all, 3e-05",27.9M,25,86.36\% $\pm$ 0.27,1h 44m,7,302_f_lr3e5_wd0p05
