@@ -1,0 +1,10 @@
+seed	run_name	stage	scope	rank	train_head	lr	weight_decay	output_dir
+420	000_lin_lr1e3_wd0p05	linear_base	none	none	head_only	1e-3	0.05	./outputs/food101_l40s_atrous_budget_scaling_28671172/seed_420/000_lin_lr1e3_wd0p05
+420	117_q_all_r4_h1_lr1em4_wd0p0_k3d3	quad_dw	all	4	yes	1e-4	0.0	./outputs/food101_l40s_atrous_budget_scaling_28671172/seed_420/117_q_all_r4_h1_lr1em4_wd0p0_k3d3
+420	118_q_all_r4_h1_lr3em4_wd0p0_k3d3	quad_dw	all	4	yes	3e-4	0.0	./outputs/food101_l40s_atrous_budget_scaling_28671172/seed_420/118_q_all_r4_h1_lr3em4_wd0p0_k3d3
+420	119_q_all_r8_h1_lr1em4_wd0p0_k3d3	quad_dw	all	8	yes	1e-4	0.0	./outputs/food101_l40s_atrous_budget_scaling_28671172/seed_420/119_q_all_r8_h1_lr1em4_wd0p0_k3d3
+420	120_q_all_r8_h1_lr3em4_wd0p0_k3d3	quad_dw	all	8	yes	3e-4	0.0	./outputs/food101_l40s_atrous_budget_scaling_28671172/seed_420/120_q_all_r8_h1_lr3em4_wd0p0_k3d3
+420	214_l_all_r4_h1_lr1em4_wd0p0	lora_dw	all	4	yes	1e-4	0.0	./outputs/food101_l40s_atrous_budget_scaling_28671172/seed_420/214_l_all_r4_h1_lr1em4_wd0p0
+420	215_l_all_r4_h1_lr3em4_wd0p0	lora_dw	all	4	yes	3e-4	0.0	./outputs/food101_l40s_atrous_budget_scaling_28671172/seed_420/215_l_all_r4_h1_lr3em4_wd0p0
+420	216_l_all_r8_h1_lr1em4_wd0p0	lora_dw	all	8	yes	1e-4	0.0	./outputs/food101_l40s_atrous_budget_scaling_28671172/seed_420/216_l_all_r8_h1_lr1em4_wd0p0
+420	217_l_all_r8_h1_lr3em4_wd0p0	lora_dw	all	8	yes	3e-4	0.0	./outputs/food101_l40s_atrous_budget_scaling_28671172/seed_420/217_l_all_r8_h1_lr3em4_wd0p0

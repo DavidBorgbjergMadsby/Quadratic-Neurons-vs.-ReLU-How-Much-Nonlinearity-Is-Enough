@@ -1,0 +1,65 @@
+Command: C:\Users\hasee\Miniconda3\envs\quad_lora\python.exe C:\Users\hasee\OneDrive\Dokumenter\github\Quadratic-Neurons-vs.-ReLU-How-Much-Nonlinearity-Is-Enough\Quadratic-Neurons-vs.-ReLU-How-Much-Nonlinearity-Is-Enough\Haseeb_trials\3_test\train_LoRA_Qudratic_local_best.py --dataset food101 --data-root C:\Users\hasee\OneDrive\Dokumenter\github\Quadratic-Neurons-vs.-ReLU-How-Much-Nonlinearity-Is-Enough\Quadratic-Neurons-vs.-ReLU-How-Much-Nonlinearity-Is-Enough\Haseeb_trials\3_test\data --output-dir C:\Users\hasee\quad_runs\food101_8q8l2f_20260611_002415\105_q_all_r1_h0_lr3em4_wd0p0 --batch-size 32 --num-workers 4 --grad-clip 5.0 --seed 42 --print-trainable-names --stage quad_dw --base-checkpoint C:\Users\hasee\quad_runs\food101_8q8l2f_20260611_002415\000_lin_lr1em3_wd0p05\food101\linear_base\best_model.pt --adapter-scope all --adapter-rank 1 --epochs 12 --lr 3e-4 --weight-decay 0.0
+CWD: C:\Users\hasee\OneDrive\Dokumenter\github\Quadratic-Neurons-vs.-ReLU-How-Much-Nonlinearity-Is-Enough\Quadratic-Neurons-vs.-ReLU-How-Much-Nonlinearity-Is-Enough\Haseeb_trials\3_test
+Started: 2026-06-11T04:35:39
+================================================================================
+[info] inserted 18 quad depthwise adapters
+Trainable params: 649,152 / 28,546,949 (2.27%)
+Trainable parameter tensors:
+  features.1.0.block.0.wa.weight      4,704
+  features.1.0.block.0.wb.weight      4,704
+  features.1.1.block.0.wa.weight      4,704
+  features.1.1.block.0.wb.weight      4,704
+  features.1.2.block.0.wa.weight      4,704
+  features.1.2.block.0.wb.weight      4,704
+  features.3.0.block.0.wa.weight      9,408
+  features.3.0.block.0.wb.weight      9,408
+  features.3.1.block.0.wa.weight      9,408
+  features.3.1.block.0.wb.weight      9,408
+  features.3.2.block.0.wa.weight      9,408
+  features.3.2.block.0.wb.weight      9,408
+  features.5.0.block.0.wa.weight     18,816
+  features.5.0.block.0.wb.weight     18,816
+  features.5.1.block.0.wa.weight     18,816
+  features.5.1.block.0.wb.weight     18,816
+  features.5.2.block.0.wa.weight     18,816
+  features.5.2.block.0.wb.weight     18,816
+  features.5.3.block.0.wa.weight     18,816
+  features.5.3.block.0.wb.weight     18,816
+  features.5.4.block.0.wa.weight     18,816
+  features.5.4.block.0.wb.weight     18,816
+  features.5.5.block.0.wa.weight     18,816
+  features.5.5.block.0.wb.weight     18,816
+  features.5.6.block.0.wa.weight     18,816
+  features.5.6.block.0.wb.weight     18,816
+  features.5.7.block.0.wa.weight     18,816
+  features.5.7.block.0.wb.weight     18,816
+  features.5.8.block.0.wa.weight     18,816
+  features.5.8.block.0.wb.weight     18,816
+  features.7.0.block.0.wa.weight     37,632
+  features.7.0.block.0.wb.weight     37,632
+  features.7.1.block.0.wa.weight     37,632
+  features.7.1.block.0.wb.weight     37,632
+  features.7.2.block.0.wa.weight     37,632
+  features.7.2.block.0.wb.weight     37,632
+[best] epoch 1 | test_acc: 0.8041
+[food101][quad_dw] Epoch 1/12 | train_loss: 0.7057 | train_acc: 0.8080 | test_loss: 0.7075 | test_acc: 0.8041
+[best] epoch 2 | test_acc: 0.8078
+[food101][quad_dw] Epoch 2/12 | train_loss: 0.6593 | train_acc: 0.8190 | test_loss: 0.6993 | test_acc: 0.8078
+[best] epoch 3 | test_acc: 0.8088
+[food101][quad_dw] Epoch 3/12 | train_loss: 0.6188 | train_acc: 0.8309 | test_loss: 0.6941 | test_acc: 0.8088
+[best] epoch 4 | test_acc: 0.8099
+[food101][quad_dw] Epoch 4/12 | train_loss: 0.5840 | train_acc: 0.8403 | test_loss: 0.6921 | test_acc: 0.8099
+[best] epoch 5 | test_acc: 0.8109
+[food101][quad_dw] Epoch 5/12 | train_loss: 0.5482 | train_acc: 0.8509 | test_loss: 0.6952 | test_acc: 0.8109
+[food101][quad_dw] Epoch 6/12 | train_loss: 0.5142 | train_acc: 0.8610 | test_loss: 0.6995 | test_acc: 0.8093
+[food101][quad_dw] Epoch 7/12 | train_loss: 0.4844 | train_acc: 0.8699 | test_loss: 0.7030 | test_acc: 0.8095
+[food101][quad_dw] Epoch 8/12 | train_loss: 0.4530 | train_acc: 0.8786 | test_loss: 0.7088 | test_acc: 0.8070
+[food101][quad_dw] Epoch 9/12 | train_loss: 0.4259 | train_acc: 0.8860 | test_loss: 0.7118 | test_acc: 0.8070
+[food101][quad_dw] Epoch 10/12 | train_loss: 0.4003 | train_acc: 0.8951 | test_loss: 0.7150 | test_acc: 0.8070
+[food101][quad_dw] Epoch 11/12 | train_loss: 0.3743 | train_acc: 0.9022 | test_loss: 0.7257 | test_acc: 0.8060
+[food101][quad_dw] Epoch 12/12 | train_loss: 0.3534 | train_acc: 0.9084 | test_loss: 0.7257 | test_acc: 0.8057
+Training time: 6731.43 seconds
+Saved outputs to: C:\Users\hasee\quad_runs\food101_8q8l2f_20260611_002415\105_q_all_r1_h0_lr3em4_wd0p0\food101\quad_dw\all_rank_1
+================================================================================
+Finished: 2026-06-11T06:27:54
+Exit code: 0
