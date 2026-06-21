@@ -1,0 +1,4 @@
+seed	run_name	stage	activation	quadratic	quad_rank	scratch_width	epochs	lr	weight_decay	output_dir
+420	001_standard_relu_scratch	standard_relu_scratch	relu	no	2	64	100	1e-3	0.05	./outputs/food101_l40s_3scratch_multiseed_28671147/seed_420/001_standard_relu_scratch
+420	002_identity_scratch	identity_scratch	identity	no	2	64	100	1e-3	0.05	./outputs/food101_l40s_3scratch_multiseed_28671147/seed_420/002_identity_scratch
+420	003_quadratic_identity_scratch_r2	quadratic_identity_scratch	identity	yes	2	64	100	1e-3	0.05	./outputs/food101_l40s_3scratch_multiseed_28671147/seed_420/003_quadratic_identity_scratch_r2

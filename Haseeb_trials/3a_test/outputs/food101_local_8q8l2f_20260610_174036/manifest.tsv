@@ -1,0 +1,2 @@
+run_name	stage	scope	rank	head	lr	weight_decay	output_dir
+000_linear_base_lr_1em3_wd_0p05	linear_base	none	none	head_only	1e-3	0.05	C:\Users\hasee\OneDrive\Dokumenter\github\Quadratic-Neurons-vs.-ReLU-How-Much-Nonlinearity-Is-Enough\Quadratic-Neurons-vs.-ReLU-How-Much-Nonlinearity-Is-Enough\Haseeb_trials\3_test\outputs\food101_local_8q8l2f_20260610_174036\000_linear_base_lr_1em3_wd_0p05
