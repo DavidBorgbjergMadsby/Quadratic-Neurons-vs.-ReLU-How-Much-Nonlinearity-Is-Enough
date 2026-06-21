@@ -1,0 +1,96 @@
+aa4596a - Haseeb, 19 minutes ago : Merge pull request #11 from DavidBorgbjergMadsby/David_trials
+7914b77 - Haseeb, 19 minutes ago : merge
+5c4a1ef - Haseeb, 21 minutes ago : Merge pull request #10 from DavidBorgbjergMadsby/David_trials
+ce95b87 - Haseeb, 22 minutes ago : Resolve merge conflicts
+e227a87 - Haseeb, 24 minutes ago : merge conflight
+02c6685 - Haseeb, 25 minutes ago : Merge pull request #9 from DavidBorgbjergMadsby/haseeb_trials_2
+f72d80f - Haseeb, 28 minutes ago : Resolve merge conflicts
+68b591c - Haseeb, 32 minutes ago : merge
+e79872f - Haseeb, 35 minutes ago : merge conflicts solving
+dc657b7 - Haseeb, 41 minutes ago : Merge branch 'David_trials'
+fbe440b - Haseeb, 42 minutes ago : merge conflicts solving
+2a19df7 - Haseeb, 42 minutes ago : merge conflicts solving
+c689811 - Malthe, 47 minutes ago : Merge branch 'David_trials'
+5bf57e1 - Malthe Jespersen, 50 minutes ago : Delete David_trials_old directory
+0ea9a62 - Malthe, 53 minutes ago : Merge branch 'main' into MJ-NN-from-scratch
+361cd81 - Malthe, 56 minutes ago : Reduced from one folder too two folders, too keep the main merge simple
+3a6d719 - Malthe, 58 minutes ago : We didn't needed the pre commit so we removed it
+81cab81 - Malthe, 58 minutes ago : Changed the name of David_triels folder to provent merge conflict
+d75c498 - DavidBorgbjergMadsby, 59 minutes ago : updated stats
+198bde8 - Haseeb, 61 minutes ago : data
+8fd4e6e - Haseeb, 22 hours ago : data from final runs
+bb7f723 - Malthe, 32 hours ago : Made a new folder and moved the different files into it
+b1ba9ff - DavidBorgbjergMadsby, 34 hours ago : Create log_David.txt
+755b3ba - DavidBorgbjergMadsby, 34 hours ago : Merge pull request #6 from DavidBorgbjergMadsby/David_trials
+ee89c5d - DavidBorgbjergMadsby, 34 hours ago : cleaning branch
+5ce7a44 - Haseeb, 34 hours ago : clean up
+1c8befe - Malthe, 35 hours ago : Create log_Malthe_Branch.txt
+6da0ff6 - Malthe, 35 hours ago : Deleted Haseebtrails folder so there won't come conflict when mergin onto main
+f8c0470 - Haseeb, 35 hours ago : log
+67ca0eb - Haseeb, 35 hours ago : log
+5e63497 - Malthe, 35 hours ago : generated a figure that illustrates how the data nned to be fucosed inside a region for best approximation
+9339b07 - Haseeb, 2 days ago : data analysisi
+acedb20 - DavidBorgbjergMadsby, 3 days ago : Merge pull request #5 from DavidBorgbjergMadsby/David_trials
+1c0ebd1 - DavidBorgbjergMadsby, 3 days ago : Update Experiment_A_Stats.ipynb
+d593ae6 - DavidBorgbjergMadsby, 3 days ago : Update Experiment_A_Stats.ipynb
+8eacac0 - Haseeb, 4 days ago : Merge branch 'haseeb_trials_2' of https://github.com/DavidBorgbjergMadsby/Quadratic-Neurons-vs.-ReLU-How-Much-Nonlinearity-Is-Enough into haseeb_trials_2
+f45f70c - Haseeb, 4 days ago : 3btest
+8d0045d - Remy0204, 6 days ago : Merge branch 'haseeb_trials_2' of https://github.com/DavidBorgbjergMadsby/Quadratic-Neurons-vs.-ReLU-How-Much-Nonlinearity-Is-Enough into haseeb_trials_2
+f7ab24f - Remy0204, 6 days ago : asd
+841c32f - Remy0204, 6 days ago : asd
+5e6cf25 - Haseeb, 6 days ago : Update run_food101_local_high_rank.py
+0801607 - Haseeb, 6 days ago : 5 iteration testing
+1a981ba - DavidBorgbjergMadsby, 6 days ago : Merge pull request #4 from DavidBorgbjergMadsby/David_trials
+9aea007 - DavidBorgbjergMadsby, 6 days ago : Merge branch 'David_trials' of https://github.com/DavidBorgbjergMadsby/Quadratic-Neurons-vs.-ReLU-How-Much-Nonlinearity-Is-Enough into David_trials
+1900c86 - DavidBorgbjergMadsby, 6 days ago : ExperimentA
+3093102 - Remy0204, 7 days ago : local
+b92b636 - Haseeb, 7 days ago : local python file
+e749f14 - Haseeb, 7 days ago : iteration 5
+d29a1c0 - Haseeb, 7 days ago : trainign
+3ee9406 - Haseeb, 9 days ago : dasf
+eed8738 - Haseeb, 9 days ago : Merge branch 'haseeb_trials_2' of https://github.com/DavidBorgbjergMadsby/Quadratic-Neurons-vs.-ReLU-How-Much-Nonlinearity-Is-Enough into haseeb_trials_2
+bc33f4c - Remy0204, 9 days ago : data
+e8fd7a6 - Remy0204, 9 days ago : dta
+f7ddac5 - Haseeb, 9 days ago : data
+9e6992b - Remy0204, 10 days ago : datga
+30f36d8 - Remy0204, 10 days ago : data
+3b031c3 - Remy0204, 10 days ago : dataq
+4f74092 - Haseeb, 10 days ago : data
+c45440a - Haseeb, 10 days ago : data
+5ecf81e - Haseeb, 10 days ago : 3a code
+304f551 - Haseeb, 11 days ago : sdf
+51f8185 - Remy0204, 11 days ago : Merge branch 'haseeb_trials_2' of https://github.com/DavidBorgbjergMadsby/Quadratic-Neurons-vs.-ReLU-How-Much-Nonlinearity-Is-Enough into haseeb_trials_2
+062b5a5 - Remy0204, 11 days ago : scripts
+8e5a6b5 - Haseeb, 11 days ago : df
+6282b25 - Remy0204, 11 days ago : asd
+6a44165 - Remy0204, 11 days ago : asd
+520fd9a - Remy0204, 11 days ago : xz<s
+3a17218 - Remy0204, 11 days ago : fg
+e2c3a69 - Haseeb, 11 days ago : ef
+b22e2f5 - Haseeb, 11 days ago : add
+b11b42b - Remy0204, 11 days ago : 3 iteration on quadratic neurons
+ba7144e - Remy0204, 13 days ago : Merge branch 'haseeb_trials_2' of https://github.com/DavidBorgbjergMadsby/Quadratic-Neurons-vs.-ReLU-How-Much-Nonlinearity-Is-Enough into haseeb_trials_2
+6018a36 - Remy0204, 13 days ago : 2. test
+d540088 - Haseeb, 13 days ago : Merge branch 'haseeb_trials_2' of https://github.com/DavidBorgbjergMadsby/Quadratic-Neurons-vs.-ReLU-How-Much-Nonlinearity-Is-Enough into haseeb_trials_2
+848060b - Haseeb, 13 days ago : g
+300791c - Remy0204, 13 days ago : gpu at home now
+c3a2ea6 - Haseeb, 13 days ago : hpc files
+13462e7 - DavidBorgbjergMadsby, 13 days ago : upload
+d8b467f - Haseeb, 13 days ago : Update train_frozenbase.py
+7003a4d - Haseeb, 6 weeks ago : dsfdsf
+59c7a92 - Haseeb, 9 weeks ago : lora run
+fd5eefb - Haseeb, 9 weeks ago : recoded how training should be done, added lora and fixed quadranet
+b565013 - DavidBorgbjergMadsby, 9 weeks ago : Merge pull request #3 from DavidBorgbjergMadsby/David_trials
+42e01ed - Malthe, 9 weeks ago : Update nnn.ipynb
+ffdc5df - Malthe, 2 months ago : Implemented the bakward pass functions for the different calsses
+0cb6f0c - DavidBorgbjergMadsby, 2 months ago : David: Opdateret egne filer og rettet formatering
+e032fbe - Haseeb, 3 months ago : Update train_frozenbase.py
+f944019 - Malthe, 3 months ago : Update nnn.ipynb
+63afa14 - s245359, 3 months ago : Create quadratic_enhancer.py
+8ad0474 - Malthe, 3 months ago : Oploading the file with the Neural Network from scratch
+26cac70 - Haseeb, 3 months ago : Merge pull request #2 from DavidBorgbjergMadsby/haseeb_trials
+fd6817e - Haseeb, 3 months ago : enverioment problems
+d43a08c - Haseeb, 3 months ago : test on may dataset
+0994ffe - Haseeb, 3 months ago : 1. iteration
+a176b99 - DavidBorgbjergMadsby, 3 months ago : Add .gitignore for Python and Jupyter projects
+dbc6916 - DavidBorgbjergMadsby, 3 months ago : Initial commit
