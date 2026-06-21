@@ -1,0 +1,16 @@
+39ade03 - Haseeb, 6 minutes ago : Remove DS_Store files
+0a6edbf - Haseeb, 6 minutes ago : Restore Haseeb_trials from main
+ccbbcbf - Haseeb, 13 minutes ago : merge
+cd6d6b0 - Haseeb, 14 minutes ago : sadf
+f4df18a - Haseeb, 14 minutes ago : asd
+71fa25b - Haseeb, 16 minutes ago : Merge branch 'Daniel_QuadEnhancer' of https://github.com/DavidBorgbjergMadsby/Quadratic-Neurons-vs.-ReLU-How-Much-Nonlinearity-Is-Enough into Daniel_QuadEnhancer
+fa3f359 - Haseeb, 16 minutes ago : Update .gitignore
+d1a6671 - s245359, 13 days ago : Updated files
+3245c37 - Haseeb, 3 months ago : Update train_frozenbase.py
+63afa14 - s245359, 3 months ago : Create quadratic_enhancer.py
+26cac70 - Haseeb, 3 months ago : Merge pull request #2 from DavidBorgbjergMadsby/haseeb_trials
+fd6817e - Haseeb, 3 months ago : enverioment problems
+d43a08c - Haseeb, 3 months ago : test on may dataset
+0994ffe - Haseeb, 3 months ago : 1. iteration
+a176b99 - DavidBorgbjergMadsby, 3 months ago : Add .gitignore for Python and Jupyter projects
+dbc6916 - DavidBorgbjergMadsby, 3 months ago : Initial commit
