@@ -22,3 +22,7 @@ datasets/
 # IDE filer (Forhindrer at jeres personlige VS Code/PyCharm settings deles)
 .vscode/
 .idea/
+
+
+# macOS system files
+.DS_Store

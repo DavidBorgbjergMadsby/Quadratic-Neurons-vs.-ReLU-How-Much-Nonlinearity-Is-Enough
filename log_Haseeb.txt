@@ -1,0 +1,50 @@
+9339b07 - Haseeb, 11 hours ago : data analysisi
+8eacac0 - Haseeb, 3 days ago : Merge branch 'haseeb_trials_2' of https://github.com/DavidBorgbjergMadsby/Quadratic-Neurons-vs.-ReLU-How-Much-Nonlinearity-Is-Enough into haseeb_trials_2
+f45f70c - Haseeb, 3 days ago : 3btest
+8d0045d - Remy0204, 5 days ago : Merge branch 'haseeb_trials_2' of https://github.com/DavidBorgbjergMadsby/Quadratic-Neurons-vs.-ReLU-How-Much-Nonlinearity-Is-Enough into haseeb_trials_2
+f7ab24f - Remy0204, 5 days ago : asd
+841c32f - Remy0204, 5 days ago : asd
+5e6cf25 - Haseeb, 5 days ago : Update run_food101_local_high_rank.py
+0801607 - Haseeb, 5 days ago : 5 iteration testing
+3093102 - Remy0204, 6 days ago : local
+b92b636 - Haseeb, 6 days ago : local python file
+e749f14 - Haseeb, 6 days ago : iteration 5
+d29a1c0 - Haseeb, 6 days ago : trainign
+3ee9406 - Haseeb, 8 days ago : dasf
+eed8738 - Haseeb, 8 days ago : Merge branch 'haseeb_trials_2' of https://github.com/DavidBorgbjergMadsby/Quadratic-Neurons-vs.-ReLU-How-Much-Nonlinearity-Is-Enough into haseeb_trials_2
+bc33f4c - Remy0204, 8 days ago : data
+e8fd7a6 - Remy0204, 8 days ago : dta
+f7ddac5 - Haseeb, 8 days ago : data
+9e6992b - Remy0204, 8 days ago : datga
+30f36d8 - Remy0204, 8 days ago : data
+3b031c3 - Remy0204, 8 days ago : dataq
+4f74092 - Haseeb, 8 days ago : data
+5ecf81e - Haseeb, 9 days ago : 3a code
+304f551 - Haseeb, 9 days ago : sdf
+51f8185 - Remy0204, 9 days ago : Merge branch 'haseeb_trials_2' of https://github.com/DavidBorgbjergMadsby/Quadratic-Neurons-vs.-ReLU-How-Much-Nonlinearity-Is-Enough into haseeb_trials_2
+062b5a5 - Remy0204, 9 days ago : scripts
+8e5a6b5 - Haseeb, 9 days ago : df
+6282b25 - Remy0204, 10 days ago : asd
+6a44165 - Remy0204, 10 days ago : asd
+520fd9a - Remy0204, 10 days ago : xz<s
+3a17218 - Remy0204, 10 days ago : fg
+e2c3a69 - Haseeb, 10 days ago : ef
+b22e2f5 - Haseeb, 10 days ago : add
+b11b42b - Remy0204, 10 days ago : 3 iteration on quadratic neurons
+ba7144e - Remy0204, 11 days ago : Merge branch 'haseeb_trials_2' of https://github.com/DavidBorgbjergMadsby/Quadratic-Neurons-vs.-ReLU-How-Much-Nonlinearity-Is-Enough into haseeb_trials_2
+6018a36 - Remy0204, 11 days ago : 2. test
+d540088 - Haseeb, 11 days ago : Merge branch 'haseeb_trials_2' of https://github.com/DavidBorgbjergMadsby/Quadratic-Neurons-vs.-ReLU-How-Much-Nonlinearity-Is-Enough into haseeb_trials_2
+848060b - Haseeb, 11 days ago : g
+300791c - Remy0204, 11 days ago : gpu at home now
+c3a2ea6 - Haseeb, 12 days ago : hpc files
+d8b467f - Haseeb, 12 days ago : Update train_frozenbase.py
+7003a4d - Haseeb, 6 weeks ago : dsfdsf
+59c7a92 - Haseeb, 8 weeks ago : lora run
+fd5eefb - Haseeb, 8 weeks ago : recoded how training should be done, added lora and fixed quadranet
+e032fbe - Haseeb, 3 months ago : Update train_frozenbase.py
+26cac70 - Haseeb, 3 months ago : Merge pull request #2 from DavidBorgbjergMadsby/haseeb_trials
+fd6817e - Haseeb, 3 months ago : enverioment problems
+d43a08c - Haseeb, 3 months ago : test on may dataset
+0994ffe - Haseeb, 3 months ago : 1. iteration
+a176b99 - DavidBorgbjergMadsby, 3 months ago : Add .gitignore for Python and Jupyter projects
+dbc6916 - DavidBorgbjergMadsby, 3 months ago : Initial commit

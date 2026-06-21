@@ -1,0 +1,6 @@
+| method | stage | scope | rank | train_head | lr | weight_decay | n_seeds | seeds | best_test_acc_mean | best_test_acc_std | final_test_acc_mean | final_test_acc_std | best_test_loss_mean | final_test_loss_mean | training_time_hr_mean | trainable_params_mean | trainable_pct_mean | run_names |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| Full fine-tune | full_finetune | all | full | full | 3e-05 | 0.05 | 5 | 21,42,45,100,123 | 0.864198 | 0.00274798 | 0.86236 | 0.00316368 | 0.495162 | 0.789282 | 1.75534 | 2.78978e+07 | 100 | 302_f_lr3e5_wd0p05 |
+| LoRA depthwise adapter | lora_dw | all | 2 | yes | 0.0001 | 0 | 5 | 21,42,45,100,123 | 0.815358 | 0.00286293 | 0.8152 | 0.00265485 | 0.666961 | 0.667769 | 1.15586 | 740069 | 2.59126 | 208_l_all_r2_h1_lr1em4_wd0p0 |
+| Quadratic depthwise adapter | quad_dw | all | 2 | yes | 0.0001 | 0 | 5 | 21,42,45,100,123 | 0.812467 | 0.00261842 | 0.811897 | 0.00206389 | 0.679596 | 0.68087 | 1.83067 | 1.37597e+06 | 4.71287 | 108_q_all_r2_h1_lr1em4_wd0p0 |
+| Linear frozen-head baseline | linear_base | none | none | head_only | 0.001 | 0.05 | 5 | 21,42,45,100,123 | 0.784737 | 0.00433311 | 0.782638 | 0.00406964 | 0.775652 | 0.780174 | 1.22137 | 77669 | 0.278405 | 000_lin_lr1e3_wd0p05 |

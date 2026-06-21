@@ -1,0 +1,65 @@
+Command: C:\Users\hasee\Miniconda3\envs\quad_lora\python.exe C:\Users\hasee\OneDrive\Dokumenter\github\Quadratic-Neurons-vs.-ReLU-How-Much-Nonlinearity-Is-Enough\Quadratic-Neurons-vs.-ReLU-How-Much-Nonlinearity-Is-Enough\Haseeb_trials\3_test\train_LoRA_Qudratic_local_best.py --dataset food101 --data-root C:\Users\hasee\OneDrive\Dokumenter\github\Quadratic-Neurons-vs.-ReLU-How-Much-Nonlinearity-Is-Enough\Quadratic-Neurons-vs.-ReLU-How-Much-Nonlinearity-Is-Enough\Haseeb_trials\3_test\data --output-dir C:\Users\hasee\quad_runs\food101_8q8l2f_20260610_174310\000_lin_lr1em3_wd0p05 --batch-size 32 --num-workers 4 --grad-clip 5.0 --seed 42 --print-trainable-names --stage linear_base --epochs 30 --lr 1e-3 --weight-decay 0.05
+CWD: C:\Users\hasee\OneDrive\Dokumenter\github\Quadratic-Neurons-vs.-ReLU-How-Much-Nonlinearity-Is-Enough\Quadratic-Neurons-vs.-ReLU-How-Much-Nonlinearity-Is-Enough\Haseeb_trials\3_test
+Started: 2026-06-10T17:43:10
+================================================================================
+Downloading: "https://download.pytorch.org/models/convnext_tiny-983f1562.pth" to C:\Users\hasee\quad_torch_cache\hub\checkpoints\convnext_tiny-983f1562.pth
+
+  0%|          | 0.00/109M [00:00<?, ?B/s]
+  8%|\u258a         | 9.12M/109M [00:00<00:01, 95.5MB/s]
+ 19%|\u2588\u258a        | 20.2M/109M [00:00<00:00, 107MB/s] 
+ 29%|\u2588\u2588\u2589       | 31.4M/109M [00:00<00:00, 111MB/s]
+ 39%|\u2588\u2588\u2588\u2589      | 42.5M/109M [00:00<00:00, 113MB/s]
+ 49%|\u2588\u2588\u2588\u2588\u2589     | 53.6M/109M [00:00<00:00, 114MB/s]
+ 59%|\u2588\u2588\u2588\u2588\u2588\u2589    | 64.8M/109M [00:00<00:00, 114MB/s]
+ 70%|\u2588\u2588\u2588\u2588\u2588\u2588\u2589   | 75.9M/109M [00:00<00:00, 115MB/s]
+ 80%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2589  | 87.0M/109M [00:00<00:00, 115MB/s]
+ 90%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2589 | 98.1M/109M [00:00<00:00, 115MB/s]
+100%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588| 109M/109M [00:01<00:00, 115MB/s] 
+100%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588| 109M/109M [00:01<00:00, 113MB/s]
+Trainable params: 77,669 / 27,897,797 (0.28%)
+Trainable parameter tensors:
+  classifier.2.weight                77,568
+  classifier.2.bias                     101
+[best] epoch 1 | test_acc: 0.7444
+[food101][linear_base] Epoch 1/30 | train_loss: 1.5516 | train_acc: 0.6208 | test_loss: 0.9441 | test_acc: 0.7444
+[best] epoch 2 | test_acc: 0.7601
+[food101][linear_base] Epoch 2/30 | train_loss: 1.1054 | train_acc: 0.7114 | test_loss: 0.8688 | test_acc: 0.7601
+[best] epoch 3 | test_acc: 0.7670
+[food101][linear_base] Epoch 3/30 | train_loss: 1.0141 | train_acc: 0.7332 | test_loss: 0.8423 | test_acc: 0.7670
+[food101][linear_base] Epoch 4/30 | train_loss: 0.9643 | train_acc: 0.7448 | test_loss: 0.8364 | test_acc: 0.7659
+[best] epoch 5 | test_acc: 0.7716
+[food101][linear_base] Epoch 5/30 | train_loss: 0.9352 | train_acc: 0.7524 | test_loss: 0.8252 | test_acc: 0.7716
+[food101][linear_base] Epoch 6/30 | train_loss: 0.9143 | train_acc: 0.7559 | test_loss: 0.8178 | test_acc: 0.7715
+[best] epoch 7 | test_acc: 0.7752
+[food101][linear_base] Epoch 7/30 | train_loss: 0.8997 | train_acc: 0.7603 | test_loss: 0.8055 | test_acc: 0.7752
+[best] epoch 8 | test_acc: 0.7766
+[food101][linear_base] Epoch 8/30 | train_loss: 0.8867 | train_acc: 0.7623 | test_loss: 0.8041 | test_acc: 0.7766
+[food101][linear_base] Epoch 9/30 | train_loss: 0.8765 | train_acc: 0.7651 | test_loss: 0.8060 | test_acc: 0.7760
+[food101][linear_base] Epoch 10/30 | train_loss: 0.8728 | train_acc: 0.7656 | test_loss: 0.8042 | test_acc: 0.7749
+[food101][linear_base] Epoch 11/30 | train_loss: 0.8668 | train_acc: 0.7679 | test_loss: 0.8048 | test_acc: 0.7760
+[food101][linear_base] Epoch 12/30 | train_loss: 0.8603 | train_acc: 0.7695 | test_loss: 0.8044 | test_acc: 0.7743
+[food101][linear_base] Epoch 13/30 | train_loss: 0.8576 | train_acc: 0.7703 | test_loss: 0.8084 | test_acc: 0.7739
+[best] epoch 14 | test_acc: 0.7785
+[food101][linear_base] Epoch 14/30 | train_loss: 0.8557 | train_acc: 0.7708 | test_loss: 0.7938 | test_acc: 0.7785
+[food101][linear_base] Epoch 15/30 | train_loss: 0.8514 | train_acc: 0.7733 | test_loss: 0.8044 | test_acc: 0.7752
+[food101][linear_base] Epoch 16/30 | train_loss: 0.8512 | train_acc: 0.7711 | test_loss: 0.8028 | test_acc: 0.7749
+[food101][linear_base] Epoch 17/30 | train_loss: 0.8517 | train_acc: 0.7714 | test_loss: 0.8053 | test_acc: 0.7731
+[food101][linear_base] Epoch 18/30 | train_loss: 0.8499 | train_acc: 0.7711 | test_loss: 0.8124 | test_acc: 0.7726
+[food101][linear_base] Epoch 19/30 | train_loss: 0.8487 | train_acc: 0.7714 | test_loss: 0.7971 | test_acc: 0.7774
+[food101][linear_base] Epoch 20/30 | train_loss: 0.8488 | train_acc: 0.7711 | test_loss: 0.8012 | test_acc: 0.7770
+[food101][linear_base] Epoch 21/30 | train_loss: 0.8443 | train_acc: 0.7736 | test_loss: 0.7977 | test_acc: 0.7779
+[food101][linear_base] Epoch 22/30 | train_loss: 0.8458 | train_acc: 0.7729 | test_loss: 0.8060 | test_acc: 0.7733
+[food101][linear_base] Epoch 23/30 | train_loss: 0.8424 | train_acc: 0.7724 | test_loss: 0.8000 | test_acc: 0.7763
+[food101][linear_base] Epoch 24/30 | train_loss: 0.8454 | train_acc: 0.7723 | test_loss: 0.8092 | test_acc: 0.7735
+[food101][linear_base] Epoch 25/30 | train_loss: 0.8441 | train_acc: 0.7736 | test_loss: 0.8044 | test_acc: 0.7736
+[food101][linear_base] Epoch 26/30 | train_loss: 0.8423 | train_acc: 0.7735 | test_loss: 0.8030 | test_acc: 0.7772
+[food101][linear_base] Epoch 27/30 | train_loss: 0.8448 | train_acc: 0.7738 | test_loss: 0.8140 | test_acc: 0.7743
+[food101][linear_base] Epoch 28/30 | train_loss: 0.8412 | train_acc: 0.7738 | test_loss: 0.8038 | test_acc: 0.7751
+[best] epoch 29 | test_acc: 0.7790
+[food101][linear_base] Epoch 29/30 | train_loss: 0.8469 | train_acc: 0.7727 | test_loss: 0.7980 | test_acc: 0.7790
+[food101][linear_base] Epoch 30/30 | train_loss: 0.8436 | train_acc: 0.7726 | test_loss: 0.8040 | test_acc: 0.7768
+Training time: 4106.96 seconds
+Saved outputs to: C:\Users\hasee\quad_runs\food101_8q8l2f_20260610_174310\000_lin_lr1em3_wd0p05\food101\linear_base
+================================================================================
+Finished: 2026-06-10T18:51:43
+Exit code: 0
